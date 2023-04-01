@@ -1,0 +1,4 @@
+En la línea $extFoto=explode('.',$fotoPrin);
+, estás dividiendo el nombre del archivo en partes separadas por puntos para obtener la extensión del archivo.
+Esto podría no funcionar si el nombre del archivo contiene más de un punto. 
+Sería mejor utilizar la función pathinfo() para obtener la extensión del archivo: $extFoto = pathinfo($fotoPrin, PATHINFO_EXTENSION);.

@@ -1,0 +1,277 @@
+.navbar {
+  background-color: transparent;
+}
+.misbic{
+  padding-top: 2%;
+}
+
+body{
+  background-color: #000000!important;
+}
+.tituloform{
+  border-bottom:1px #4e4e4e dashed ;
+}
+
+.modal-body{
+  max-height: 100%; 
+  overflow-y: auto;
+}
+.prueba{
+  background-color: red;
+}
+
+
+.modpan{
+  border-color: red 10px solid;
+}
+
+.titnom{
+  background-color: #000000; 
+  width: 100%; 
+}
+
+.panelContTodBicis {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.paneltitulo{
+  width: 100%;
+  border: #4e4e4e 2px dashed;
+  height: auto;
+  background-color: #1f2021;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.datosbicispanel{
+  text-align: start;
+  width: 100%;
+  height: auto;
+}
+
+.imgbictam{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+
+/* Estilo para el contenedor */
+.container {
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-img-fixed-size {
+  width: 80%;
+  /* Define el ancho deseado */
+  height: 150px;
+  /* Define la altura deseada */
+  object-fit: cover;
+  /* Ajusta la imagen al tamaño sin deformarla */
+}
+
+.description {
+  flex-basis: 50%;
+  margin-right: 20px;
+}
+
+.description h2 {
+  margin-top: 10;
+}
+
+.image-container {
+  flex-basis: 45%;
+}
+
+/* Estilo para la img de perfil */
+.image-container img {
+  max-width: 90%;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.btn-save {
+  background-color: #000000;
+}
+
+#form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+form {
+  display: flex;
+  width: 40%;
+  border-radius: 10px;
+}
+
+form h2 {
+  margin-top: 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+form button {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.edit-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(252, 15, 15, 0.5);
+  display: none;
+  margin: auto;
+}
+
+
+/* Formulario despues de Agregar */
+
+
+
+
+/* Estilo para el panel "Mis Bicicletas:"  */
+#mi-panel {
+  background-color: rgb(251, 233, 231);
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* Estilo para botn "Agregar"  */
+#open-form {
+  background-color: #b8ddff8a;
+  border-radius: 5px;
+  border: 1px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  color: rgb(3, 3, 3);
+
+}
+
+.card-img-fixed-size {
+  width: 10%;
+  /* Define el ancho deseado */
+  height: 10%;
+  /* Define la altura deseada */
+  object-fit: cover;
+  /* Ajusta la imagen al tamaño sin deformarla */
+}
+
+.imgPrin {
+  width: 350px;
+  /* Define el ancho deseado */
+  height: 350px;
+  /* Define la altura deseada */
+  object-fit: cover;
+  /* Ajusta la imagen al tamaño sin deformarla */
+}
+
+
+.card-container {
+  margin: 10px;
+}
+
+.card {
+  width: 10%;
+  height: auto;
+  align-items: center;
+}
+.panelcardsl{
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  border: red 10px solid;
+}
+
+.panimgcen{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+  }
+
+
+.imgContCard {
+  width: 300px;
+  height: 200px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+.paneltodobici {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.imgCard {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.titl {
+  height: 10px;
+  margin-bottom: 10px !important;
+  
+}
+
+.desc {
+  height: 50px;
+  margin: 10px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* alinea los botones a la derecha */
+  white-space: nowrap;
+  margin-bottom: 10px;
+  /* ajusta el margen inferior para separar los botones del contenido de la tarjeta */
+}

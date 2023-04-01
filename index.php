@@ -1,0 +1,88 @@
+<?php 
+    include_once './views/publicas/index/header.php';
+?>
+
+<div class="container">
+    <div class="col" id="resultado-busqueda"></div>
+    <div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" action="./controllers/LoginControler.php?m=i" method="post">
+                        <img id="logo" src="./views/src/imgSis/log.png" style="width: 100px;" alt="Logo">
+                        <input type="text" name="user" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Usuario">
+                        <input type="password" name="passw" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Contraseña">
+                        <input type="submit" name="btnLog" value="Iniciar Sesión"><br>
+                        <a href="/BicRobmvc/views/publicas/registroUsr/regUsr.php"
+                            class="btn btn-success">Registrarse</a>
+                        <br>
+                        <a href="#">¿Olvidó su contraseña? Recuperar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="panel">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="./views/src/imgCarrusel/carrusel (1).jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+                <img src="./views/src/imgCarrusel/carrusel (2).jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="./views/src/imgCarrusel/carrusel (3).jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="./views/src/imgCarrusel/carrusel (4).jpeg" class="d-block w-100">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-7">
+        <h3 class="text-center">Actividad Reciente</h3>
+
+
+        <div class="panelDeBicis">
+            <?php
+                    //echo "/BicRobmvc/controllers/biciController.php";
+                    include_once ("./controllers/biciController.php");
+                    $biciController = new biciController($conexion);
+                    $biciController->selectIndex("Reportado","estatus","ORDER BY id_bic ASC"); // llama al método select() del controlador
+                          
+                ?>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="panel">
+            <h3>Segundo panel pa la info y consejos o o que se</h3>
+            <h4>Segundo panel pa la info y consejos o o que se</h4>
+        </div>
+    </div>
+</div>
+
+
+
+<?php 
+include_once './views/publicas/index/footer.php';
+?>

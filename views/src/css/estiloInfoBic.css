@@ -1,0 +1,28 @@
+body{
+    background-color: #000000 !important;
+}
+  .paneltodo{
+    background-color: #1f2021;
+    border-radius: 5px;
+    color: white;
+    border: #4e4e4e 1px dashed;
+  }
+  .paneldeinfous{
+    margin-top: 10%;
+  }
+  .recimg{
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    border: 1px dashed white;
+  }
+  .panelContTodBicis {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+  }
