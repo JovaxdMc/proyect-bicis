@@ -84,7 +84,7 @@
         <!-- "Panel de Mis Bicicletas" -->
         <div id="mi-panel">
             <div>
-                <h5 class="text-center fs-1">Mis Bicicletas:</h5>
+                <h5 class="text-center fs-1">Datos de la bicicleta</h5>
                 <div class="row">
                     <div class="col" id="resultado-busqueda"></div>
                     <div class="modal fade" id="modalNbic" tabindex="-1" role="dialog" aria-labelledby="miModalLabel"
