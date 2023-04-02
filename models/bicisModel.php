@@ -18,6 +18,21 @@ class bicisModel {
         
     }
 
+    public function obtenerBiciReporteJson($numSerie) {
+        $sql = "SELECT b.id_bic, b.img_prin, b.num_serie, b.marca, b.modelo, b.talla, b.year, b.rodada, b.estatus, b.comprobante, r.id_reporte, r.fecha_reporte, r.fecha_robo, r.lugar, r.hora, r.comentarios, r.estado_rep 
+        FROM bicis b 
+        INNER JOIN reportes r 
+        ON b.id_bic = r.id_bic 
+        WHERE b.num_serie= :ns ;";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":ns", $numSerie);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($resultados);
+    }
+    
+
     
 
     public function insertarBici($img_prin,$num_s,$marca,$modelo,$talla,$year,$rodada,$comprobante,$fech_reg,$id_u) {

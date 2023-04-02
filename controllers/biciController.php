@@ -18,8 +18,8 @@ class biciController {
                 $param=$_POST["param"];
                 $extra=$_POST["extra"];
                 $this->selectIndex($id_u,$param,$orden);
-            }else if($accion == 'delete'){
-                $this->insertImgs();
+            }else if($accion == 'SelectJson'){
+                $this->SelectJson();
             }else if($accion == 'elim'){
                 $this->insertImgs();
             }else if($accion == 'updt'){
@@ -33,7 +33,23 @@ class biciController {
     }
 
    
+    public function SelectJson(){
+        $numSerie = $_POST["numSerie"];
+        
+        include_once(__DIR__ . '/../models/bicisModel.php');
+        if (!empty($numSerie)) {
+            $bicisModel = new bicisModel($this->conexion);
+            $resultado = $bicisModel->obtenerBiciReporteJson($numSerie);           
+            
+            // Decodificar la cadena JSON en una matriz PHP
+            $resultado = json_decode($resultado, true);
+                echo $resultado;  
 
+            }else {
+            $error = $bicisModel->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        }
+    }
     
     public function select($id_u,$param,$orden){
         include_once(__DIR__ . '/../models/bicisModel.php');
