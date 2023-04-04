@@ -171,4 +171,5 @@ include_once ('../res/nav.php');
     <script src="./vistasPrev.js"></script>
     <script src="./editar.js"></script>
 
+
 </html>

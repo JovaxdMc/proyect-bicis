@@ -13,7 +13,8 @@ class notifController {
                 $contenido=$_POST["contenido"];
                 $this->insertNotif($id_usrR,$id_usrNotif,$id_bic,$contenido);
             }else if($accion == 'select'){
-                
+                $id_usrR = $_GET["idUsr_R"];
+                $this->SelecNotif($id_usrR);
             }else if($accion == 'selectIndex'){
                 
             }else if($accion == 'SelectRepJson'){
@@ -36,11 +37,12 @@ class notifController {
         if (!empty($id_usrR)) {
 
             $fecha_actual = date("Y-m-d");
+            $hora_actual = date("H:i");
             $random_string = substr(md5(mt_rand()), 0, 10);
             $id_notif = $random_string . "_" . $fecha_actual . "_" . $id_usrR;
             
             $notifModel = new notifModel($this->conexion);
-            $notifModel->insertarNotif($id_notif,$id_usrR,$id_usrNotif,$id_bic,$contenido);               
+            $notifModel->insertarNotif($id_notif,$id_usrR,$id_usrNotif,$id_bic,$contenido,$fecha_actual,$hora_actual);               
             // Decodificar la cadena JSON en una matriz PHP
             
             if(isset($_FILES['evidencias'])) {
@@ -75,6 +77,20 @@ class notifController {
         }
     }
     
+    public function SelecNotif($id_usrR){
+
+        include_once(__DIR__ . '/../models/notifModel.php');
+        if (!empty($id_usrR)) {
+            $notifModel = new notifModel($this->conexion);
+            $resultado = $notifModel->selectNotif($id_usrR);               
+            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
+           
+            }else {
+            $error = $bicisModel->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        }
+    }
     
    
 

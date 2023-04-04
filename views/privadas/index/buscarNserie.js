@@ -16,7 +16,14 @@ form.addEventListener("submit", function(event) {
     var numSerie = document.querySelector("#input-num-serie").value;
 
     if (numSerie == "") {
-        alert("Por favor, ingrese un número de serie válido");
+      Swal.fire({
+        title:'<h3 style="color:white;">Introduzca un numero de serie por favor</h3>',
+        text: '',
+        icon: 'error',
+        background:'#000',
+        backdrop:true,
+        confirmButtonColor:'#068'
+      });
         return;
     }
 
@@ -36,28 +43,42 @@ form.addEventListener("submit", function(event) {
         return response.json(); // Parsear la respuesta como un objeto JSON
       })
       .then(data => {  
-        // Crear el HTML para mostrar los datos en el modal
-        console.log(data);
-        var json = JSON.parse(data);
-        var html = `
-          <h3>${json[0].marca}</h3>
-          <img src="/BicRobmvc/views/src/imgBicis/${json[0].img_prin}" class="card-img-fixed-size" alt="${data[0].img_prin}">
-          <p>Talla: ${json[0].talla}</p>
-          <p>Rodada: ${json[0].rodada}</p>
-          <p>Fecha del robo: ${json[0].fecha_robo}</p>
-          <p>Lugar del robo: ${json[0].lugar}</p>
-          <p>Hora del robo: ${json[0].hora}</p>
-          <p>Comentarios:</p>
-          <p>${json[0].comentarios}</p>
-          <br>
-          <a href="/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=${json[0].id_bic}" class="btn btn-success">Más información</a>
-        `;
-    
-        // Agregar el HTML al contenido del modal
-        modalBody.innerHTML = html;
-    
-        // Mostrar el modal
-        modal.show();        
+        try {
+          var json = JSON.parse(data);
+          // Crear el HTML para mostrar los datos en el modal
+          //console.log(data);
+          var json = JSON.parse(data);
+          var html = `
+            <h3>${json[0].marca}</h3>
+            <img src="/BicRobmvc/views/src/imgBicis/${json[0].img_prin}" class="card-img-fixed-size" alt="${data[0].img_prin}">
+            <p>Talla: ${json[0].talla}</p>
+            <p>Rodada: ${json[0].rodada}</p>
+            <p>Fecha del robo: ${json[0].fecha_robo}</p>
+            <p>Lugar del robo: ${json[0].lugar}</p>
+            <p>Hora del robo: ${json[0].hora}</p>
+            <p>Comentarios:</p>
+            <p>${json[0].comentarios}</p>
+            <br>
+            <a href="/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=${json[0].id_bic}" class="btn btn-success">Más información</a>
+          `;
+      
+          // Agregar el HTML al contenido del modal
+          modalBody.innerHTML = html;
+      
+          // Mostrar el modal
+          modal.show();  
+        } catch (e) {
+            Swal.fire({
+              title:'<h3 style="color:white;">No se encontro el numero de serie</h3>',
+              text: '',
+              icon: 'error',
+              background:'#000',
+              backdrop:true,
+              confirmButtonColor:'#068'
+            });
+              return;
+        }
+             
       })
       .catch(error => {
         console.error(error);

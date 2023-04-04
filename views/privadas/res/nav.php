@@ -24,6 +24,7 @@
                 <a class="nav-link" href="#">
                     <img src="/BicRobmvc/views/src/imgUsrs/<?php echo $_SESSION["imgPerfil"]?>" alt="Foto de perfil"
                         width="40" height="40">
+                    <input type="hidden" id="id_usr_nav" value="<?php echo $_SESSION["id"]?>">
                 </a>
             </li>
             
