@@ -1,3 +1,5 @@
+//importa este script en cualquier lugar en el que necesites que una imagen tenga un zoom
+
 function mostrarVistaPrevia(imagen) {
     // Crear un elemento div para la vista previa
     const vistaPrevia = document.createElement("div");

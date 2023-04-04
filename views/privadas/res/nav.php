@@ -21,11 +21,23 @@
         </div>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" href="#">
                     <img src="/BicRobmvc/views/src/imgUsrs/<?php echo $_SESSION["imgPerfil"]?>" alt="Foto de perfil"
                         width="40" height="40">
                 </a>
             </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fas fa-bell"></i>
+                    <span id="notification-count" class="badge badge-pill badge-danger">0</span>
+                </a>
+                <ul id="notification-list" class="dropdown-menu dropdown-menu-end">
+                    <!-- Las notificaciones se agregarán aquí dinámicamente -->
+                </ul>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -39,5 +51,4 @@
         </ul>
     </div>
 </nav>
-
-
+<script src="/BicRobmvc/views/src/js/notificacionesNaV.js"></script>
