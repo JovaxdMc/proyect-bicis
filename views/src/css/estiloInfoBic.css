@@ -26,3 +26,42 @@ body{
     text-align: center;
     margin-top: 3%;
   }
+
+
+
+
+
+
+  #image-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+  }
+  
+  .image-item {
+    margin: 10px;
+    position: relative;
+  }
+  
+  .image-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .cancel-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  

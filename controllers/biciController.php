@@ -18,10 +18,13 @@ class biciController {
                 $param=$_POST["param"];
                 $extra=$_POST["extra"];
                 $this->selectIndex($id_u,$param,$orden);
-            }else if($accion == 'SelectJson'){
-                $this->SelectJson();
-            }else if($accion == 'elim'){
-                $this->insertImgs();
+            }else if($accion == 'SelectRepJson'){
+                $id = $_POST["id"];
+                $param = $_POST["param"];
+                $this->SelectRepJson( $id,$param);
+            }else if($accion == 'SelectRepUsrJson'){
+                $id_b = $_POST["id_b"];
+                $this->SelectRepUsrJson($id_b);
             }else if($accion == 'updt'){
                 $this->insertImgs();
             }
@@ -33,18 +36,30 @@ class biciController {
     }
 
    
-    public function SelectJson(){
-        $numSerie = $_POST["numSerie"];
-        
-        include_once(__DIR__ . '/../models/bicisModel.php');
-        if (!empty($numSerie)) {
-            $bicisModel = new bicisModel($this->conexion);
-            $resultado = $bicisModel->obtenerBiciReporteJson($numSerie);           
-            
-            // Decodificar la cadena JSON en una matriz PHP
-            $resultado = json_decode($resultado, true);
-                echo $resultado;  
+    public function SelectRepJson($id,$param){
 
+        include_once(__DIR__ . '/../models/bicisModel.php');
+        if (!empty($id)) {
+            $bicisModel = new bicisModel($this->conexion);
+            $resultado = $bicisModel->obtenerBiciReporteJson($id,$param);               
+            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
+           
+            }else {
+            $error = $bicisModel->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        }
+    }
+    
+    public function SelectRepUsrJson($id_b){
+
+        include_once(__DIR__ . '/../models/bicisModel.php');
+        if (!empty($id_b)) {
+            $bicisModel = new bicisModel($this->conexion);
+            $resultado = $bicisModel->obtenerUsrReporteJson($id_b);               
+            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
+           
             }else {
             $error = $bicisModel->conexion->errorInfo();
             throw new Exception('Error de conexión');
@@ -167,7 +182,6 @@ class biciController {
     }
     
     public function insert(){
-        error_log("Entre a insertar");
         include_once(__DIR__ . '/../models/bicisModel.php');
         $idu=$_POST["id_u"];
         $num_serie=$_POST["num_serie"];
@@ -217,7 +231,3 @@ try {
 } catch (Exception $e) {
     echo 'error'.$e->getMessage();
 }
-
-
-
-

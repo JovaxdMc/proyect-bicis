@@ -1,0 +1,87 @@
+<?php
+include_once(__DIR__ . '/../config/conexion.php');
+
+class notifController {
+    public function __construct($conexion) {
+        $this->conexion = $conexion;
+        if (isset($_GET['accion'])){
+            $accion=$_GET['accion'];
+            if ($accion == 'insert') {
+                $id_usrR=$_POST["id_usrR"];
+                $id_usrNotif=$_POST["id_usrNotif"];
+                $id_bic=$_POST["id_bic"];
+                $contenido=$_POST["contenido"];
+                $this->insertNotif($id_usrR,$id_usrNotif,$id_bic,$contenido);
+            }else if($accion == 'select'){
+                
+            }else if($accion == 'selectIndex'){
+                
+            }else if($accion == 'SelectRepJson'){
+                
+            }else if($accion == 'SelectRepUsrJson'){
+                
+            }else if($accion == 'updt'){
+                
+            }
+        } else {
+            // La clave 'accion' no está definida en $_GET
+            // Se puede proporcionar un valor predeterminado o mostrar un mensaje de error
+            //error_log("Error GET");
+        }
+    }
+
+   
+    public function insertNotif($id_usrR,$id_usrNotif,$id_bic,$contenido){
+        include_once(__DIR__ . '/../models/notifModel.php');
+        if (!empty($id_usrR)) {
+
+            $fecha_actual = date("Y-m-d");
+            $random_string = substr(md5(mt_rand()), 0, 10);
+            $id_notif = $random_string . "_" . $fecha_actual . "_" . $id_usrR;
+            
+            $notifModel = new notifModel($this->conexion);
+            $notifModel->insertarNotif($id_notif,$id_usrR,$id_usrNotif,$id_bic,$contenido);               
+            // Decodificar la cadena JSON en una matriz PHP
+
+            if(isset($_FILES['evidencias'])) {
+              $uploads_dir = $_SERVER['DOCUMENT_ROOT'].'/BicRobmvc/views/src/imgNotif/';
+              // Iterar sobre los archivos cargados
+              foreach($_FILES['evidencias']['tmp_name'] as $key => $tmp_name) {
+                $file_name = $_FILES['evidencias']['name'][$key];
+                $file_tmp = $_FILES['evidencias']['tmp_name'][$key];
+                $file_type = $_FILES['evidencias']['type'][$key];
+                // Obtener la extensión del archivo cargado
+                $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                // Generar un nombre aleatorio para el archivo
+                $random_name = 'notImg_'.uniqid('', true).$ext;
+                // Mover el archivo cargado al directorio de subida con el nuevo nombre
+                move_uploaded_file($file_tmp, $uploads_dir.$random_name);
+                $notifModel = new notifModel($this->conexion);
+                $notifModel->insertarImgNotif($random_name,$id_notif); 
+              }
+              error_log("Imágenes cargadas con éxito");
+              
+            } else {
+              error_log("No se cargó ninguna imagen");
+              
+            }
+           
+           
+            }else {
+            $error = $notifController->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        }
+    }
+    
+   
+
+    
+    
+}
+
+try {
+    $conexion = new Conexion();
+    $notifController = new notifController($conexion);
+} catch (Exception $e) {
+    echo 'error'.$e->getMessage();
+}

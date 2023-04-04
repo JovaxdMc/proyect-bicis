@@ -42,6 +42,8 @@ class reporteModel {
         //error_log($stmt);
         return $stmt;
     }
+
+    public function subirNotif
 }
 
 $conexion = new Conexion();

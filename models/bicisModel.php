@@ -18,17 +18,32 @@ class bicisModel {
         
     }
 
-    public function obtenerBiciReporteJson($numSerie) {
-        $sql = "SELECT b.id_bic, b.img_prin, b.num_serie, b.marca, b.modelo, b.talla, b.year, b.rodada, b.estatus, b.comprobante, r.id_reporte, r.fecha_reporte, r.fecha_robo, r.lugar, r.hora, r.comentarios, r.estado_rep 
-        FROM bicis b 
-        INNER JOIN reportes r 
-        ON b.id_bic = r.id_bic 
-        WHERE b.num_serie= :ns ;";
-        error_log($sql);
+    public function obtenerBiciReporteJson($id,$param) {
+        $sql = "SELECT bicis.id_bic, img_prin, num_serie, marca, modelo, talla, year, rodada, estatus, comprobante, id_reporte, fecha_reporte, fecha_robo, lugar, hora, comentarios, estado_rep 
+        FROM bicis  
+        INNER JOIN reportes 
+        ON bicis.id_bic = reportes.id_bic 
+        WHERE $param = :id ;";
         $stmt = $this->conexion->prepare($sql);
-        $stmt->bindParam(":ns", $numSerie);
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //error_log("Resultado de la consulta: " . json_encode($resultados));
+        return json_encode($resultados);
+    }
+
+    public function obtenerUsrReporteJson($id_b) {
+        $sql = "SELECT id, nombre, apellido_p, apellido_m, estado, municipio, telefono, correo
+        FROM bicis  
+        INNER JOIN usuarios 
+        ON bicis.id_u = usuarios.id 
+        WHERE id_bic = :id ;";
+        
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id", $id_b);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //error_log("Resultado de la consulta: " . json_encode($resultados));
         return json_encode($resultados);
     }
     
@@ -55,5 +70,4 @@ class bicisModel {
 
 $conexion = new Conexion();
 $bicisModel = new bicisModel($conexion);
-
 ?>
