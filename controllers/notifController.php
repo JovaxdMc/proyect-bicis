@@ -42,25 +42,27 @@ class notifController {
             $notifModel = new notifModel($this->conexion);
             $notifModel->insertarNotif($id_notif,$id_usrR,$id_usrNotif,$id_bic,$contenido);               
             // Decodificar la cadena JSON en una matriz PHP
-
+            
             if(isset($_FILES['evidencias'])) {
-              $uploads_dir = $_SERVER['DOCUMENT_ROOT'].'/BicRobmvc/views/src/imgNotif/';
-              // Iterar sobre los archivos cargados
-              foreach($_FILES['evidencias']['tmp_name'] as $key => $tmp_name) {
-                $file_name = $_FILES['evidencias']['name'][$key];
-                $file_tmp = $_FILES['evidencias']['tmp_name'][$key];
-                $file_type = $_FILES['evidencias']['type'][$key];
-                // Obtener la extensión del archivo cargado
-                $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                // Generar un nombre aleatorio para el archivo
-                $random_name = 'notImg_'.uniqid('', true).$ext;
-                // Mover el archivo cargado al directorio de subida con el nuevo nombre
-                move_uploaded_file($file_tmp, $uploads_dir.$random_name);
-                $notifModel = new notifModel($this->conexion);
-                $notifModel->insertarImgNotif($random_name,$id_notif); 
-              }
-              error_log("Imágenes cargadas con éxito");
-              
+                if (is_array($_FILES['evidencias']['tmp_name'])) {
+                    $uploads_dir = $_SERVER['DOCUMENT_ROOT'].'/BicRobmvc/views/src/imgNotif/';
+                    foreach($_FILES['evidencias']['tmp_name'] as $key => $tmp_name) {
+                      $file_name = $_FILES['evidencias']['name'][$key];
+                      $file_tmp = $_FILES['evidencias']['tmp_name'][$key];
+                      $file_type = $_FILES['evidencias']['type'][$key];
+                      // Obtener la extensión del archivo cargado
+                      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                      // Generar un nombre aleatorio para el archivo
+                      $random_name = 'notImg_'.uniqid('', true).".".$ext;
+                      // Mover el archivo cargado al directorio de subida con el nuevo nombre
+                      move_uploaded_file($file_tmp, $uploads_dir.$random_name);
+                      $notifModel = new notifModel($this->conexion);
+                      $notifModel->insertarImgNotif($random_name,$id_notif); 
+                    }
+                  } else {
+                    // Si la variable no es un array, mostrar un mensaje de error o tomar alguna otra acción
+                    error_log("El campo 'evidencias' no contiene archivos cargados.") ;
+                  }
             } else {
               error_log("No se cargó ninguna imagen");
               

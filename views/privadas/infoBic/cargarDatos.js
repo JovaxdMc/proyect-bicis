@@ -9,6 +9,10 @@ var lugarP = document.getElementById("lugar");
 var horaP = document.getElementById("hora");
 var comentsP = document.getElementById("coments");
 
+var mod = document.getElementById("nuevComent");
+var modal = new bootstrap.Modal(mod);
+
+
 var imgPrinEt = document.getElementById("img");
 
 var propieP = document.getElementById("propieP");
@@ -160,7 +164,7 @@ formNotif.addEventListener("submit", (event) => {
     
     const files = evidencias.files;
     for (let i = 0; i < files.length; i++) {
-      formData.append('evidencias', files[i]);
+      formData.append('evidencias[]', files[i]);
     }
     
   
@@ -179,15 +183,17 @@ formNotif.addEventListener("submit", (event) => {
         console.log(data);
   
         Swal.fire({
-          title:'<h3 style="color:white;"> Imagen Agregada correctamente</h3>',
+          title:'<h3 style="color:white;">Comentarios enviados correctamente</h3>',
           text: '',
           icon: 'success',
           background:'#000',
           backdrop:true,
           confirmButtonColor:'#068'
         });
-  
-        
+        modal.hide();
+        formNotif.reset()
+        evidencias.value = null;
+        imagePreview.innerHTML="";
         //location.reload(); // Agregado
       })
       .catch(error => {
@@ -195,5 +201,7 @@ formNotif.addEventListener("submit", (event) => {
       });
   });
   
+
+
 window.onload = datosBici();
 window.onload = datosUsr();

@@ -82,7 +82,7 @@ class ImgbiciController {
             echo '<div class="button-container">';
             echo '</div>';
             echo '<h3 class="titl">'.$titulo.'</h3>';
-            echo '<img src="/BicRobmvc/views/src/imgBicis/'.$nom_arch.'" alt="Imagen 1" class="card-img-top card-img-fixed-size">';
+            echo '<img src="/BicRobmvc/views/src/imgBicis/'.$nom_arch.'" alt="Imagen 1" class="card-img-top card-img-fixed-size" onclick="mostrarVistaPrevia(this)" >';
             echo '<p class="desc">'.$descripcion.'</p>';
             
             // Incluir un elemento oculto con la información de la tarjeta

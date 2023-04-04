@@ -54,13 +54,13 @@
                                             </div>
                                             <h4>¿Tienes alguna informacion?</h4>
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                                data-bs-target="#nuevBicMod"> Enviar Comentarios </button>
-                                            <div class="modal fade " id="nuevBicMod" tabindex="-1"
-                                                aria-labelledby="nuevBicMod" aria-hidden="true">
+                                                data-bs-target="#nuevComent"> Enviar Comentarios </button>
+                                            <div class="modal fade " id="nuevComent" tabindex="-1"
+                                                aria-labelledby="nuevComent" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-scrollable">
                                                     <div class="modal-content bg-dark text-light">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="nuevBicMod">Tengo informacion
+                                                            <h5 class="modal-title" id="nuevComent">Tengo informacion
                                                                 sobre la bicicleta</h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
@@ -120,5 +120,6 @@
         </div>
     </body>
     <script src="./cargarDatos.js"></script>
+    <script src="/BicRobmvc/views/src/zoomImg.js"></script>
 
 </html>
