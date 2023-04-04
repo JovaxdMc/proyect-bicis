@@ -43,7 +43,7 @@ class reporteModel {
         return $stmt;
     }
 
-    public function subirNotif
+    
 }
 
 $conexion = new Conexion();
