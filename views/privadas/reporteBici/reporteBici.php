@@ -38,32 +38,28 @@
         $comprobante = $resultado_selectU[0]['comprobante'];
 	?>
 
-        <div class="container ContFondoUno">
-            <div class="col-12">
-                <div class="row m-2 p-2 RowTitulo">
-                    <h2>Reportar Bicicleta como robada</h2>
-                </div>
-                <div class="row m-3">
-                    <div class="col-7 ConinfoBic">
+
+        <div class="container contPrin mb-4">
+            <div class="row m-2 p-2">
+                <div class="col">
+                    <div class="col-11 p-2 ConinfoBic">
+                        <h2>Reportar Bicicleta como robada</h2>
                         <h3 class="mb-4"><?php echo $marca." ".$modelo." ".$year ?></h3>
                         <p><?php echo "Talla: ".$talla ?></p>
                         <p><?php echo "Rodada: ".$rodada ?></p>
                         <p><?php echo "Fecha de Registro: ".$fecha_reg ?></p>
                     </div>
-                    <div class="col-5 p-2">
-                        <img class="img-fluid max-width: 500px"
-                            src="/BicRobmvc/views/src/imgBicis/<?php echo $fotoPrinc ?>">
-                    </div>
                 </div>
-
+                <div class="col-6 p-2">
+                    <img class="img-fluid max-width: 500px"
+                        src="/BicRobmvc/views/src/imgBicis/<?php echo $fotoPrinc ?>">
+                </div>
             </div>
 
-            <div class="row">
-                <div class="col-3 panelderep m-2 p-2">
-                    <div class="RowTitulo">
+            <div class="row m-2 p-2">
+                <div class="col-4">
+                    <div class="col p-2 ConinfoBic">
                         <h2>Datos del Robo</h2>
-                    </div>
-                    <div class="btn-group">
                         <form action="/BicRobmvc/controllers/reporteController.php?accion=insert" method="POST"
                             class="formReporte">
                             <div class="mb-3">
@@ -93,20 +89,18 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-8 panelderep m-2 p-2">
+                <div class="col-8 d-flex flex-wrap justify-content-between">
                     <?php
-                include_once ("../../../controllers/ImgBicController.php");
-                $ImgbiciController = new ImgbiciController($conexion);
-                $ImgbiciController->selecImgPriv($id_bic,"id_bic"); // llama al método select() del controlador
-                ?>
+                        include_once ("../../../controllers/ImgBicController.php");
+                        $ImgbiciController = new ImgbiciController($conexion);
+                        $ImgbiciController->selecImgPriv($id_bic,"id_bic"); // llama al método select() del controlador
+                    ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php 
 
-//footer include_once '/views/privadas/index/';
-?> </body>
+</body>
 <script src="./reporte.js"></script>
 
 </html>

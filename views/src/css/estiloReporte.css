@@ -7,12 +7,36 @@ body{
     border: 2px dashed #4e4e4e;
     border-radius: 5px;
 }
+
+.contPrin{
+    background-color: #1f2021;
+    border: 2px dashed #4e4e4e;
+    color: #ffffff; 
+    border-radius: 5px;
+}
+
+.card-container {
+    min-height: 250px;
+  }
+  
+  .card-container img {
+    margin: 5px;
+    padding: 5px;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+.titulo{
+text-align: center;
+}
+
 .RowTitulo{
     text-align: center;
 }
 .ConinfoBic{
     text-align: start;
-    margin: auto;
+    align-items: center;
 }
 .panelderep{
     border: #4e4e4e 2px dashed;
