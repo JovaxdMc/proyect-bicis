@@ -17,7 +17,7 @@
         if (this.readyState === 4 && this.status === 200) {
           // Almacenar el resultado generado en una variable JavaScript
           var opciones = this.responseText;
-          console.log(opciones);
+          //console.log(opciones);
           // Agregar el resultado al select utilizando innerHTML
           selectMarca.innerHTML = opciones;
         }
@@ -34,7 +34,7 @@
         if (this.readyState === 4 && this.status === 200) {
           // Almacenar el resultado generado en una variable JavaScript
           var opciones = this.responseText;
-          console.log(opciones);
+          //console.log(opciones);
           // Agregar el resultado al select utilizando innerHTML
           selectMarca.innerHTML = opciones;
         }
@@ -52,7 +52,7 @@
         if (this.readyState === 4 && this.status === 200) {
           // Almacenar el resultado generado en una variable JavaScript
           var opciones = this.responseText;
-          console.log(opciones);
+          //console.log(opciones);
           // Agregar el resultado al select utilizando innerHTML
           selectMarca.innerHTML = opciones;
         }
@@ -186,14 +186,14 @@ form.addEventListener("submit", function(event) {
       xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
           // Procesar la respuesta
-          console.log(this.responseText);
+          //console.log(this.responseText);
           panel.innerHTML=this.responseText;
         }
       };
     
       // Crear la cadena de consulta para enviar los datos
       var data = "extra="+MarcaF+EstadoF+MunicipioF;
-      console.log(data);
+      //console.log(data);
     
       // Enviar la solicitud
       xhr.send(data);
