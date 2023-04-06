@@ -2,17 +2,17 @@
     include_once './views/publicas/index/header.php';
 ?>
 
-
 <div class="container">
     <div class="col" id="resultado-busqueda"></div>
     <div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header pnencab">
+                    <h3>Iniciar Sesión</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="loginForm" action="./controllers/LoginControler.php?m=i" method="post">
+                    <form id="loginForm" action="./controllers/LoginControler.php?m=i" method="post" class="m-2 p-2">
                         <img id="logo" src="./views/src/imgSis/log.png" style="width: 100px;" alt="Logo">
                         <input type="text" name="user" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Usuario">
                         <input type="password" name="passw" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Contraseña">
