@@ -18,6 +18,7 @@ class imgBicModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
     public function elimImgs($id,$param) {
         $sql = "DELETE FROM imagenes_bicis WHERE $param = :id";
         $stmt = $this->conexion->prepare($sql);

@@ -38,14 +38,15 @@ class reporteController {
     include_once(__DIR__ . '/../models/reporteModel.php');
        $id_bic=$_POST["id_bic"];
        $fecha_rob=$_POST["fecha_rob"];
-       $lugar=$_POST["lugar"];
+       $Estado=$_POST["Estado"];
+       $Municipio=$_POST["Municipio"];
        $hora=$_POST["hora"];
        $comentarios=$_POST["comentarios"];
 
        $fecha_rep=date("Y-m-d");
 
        $reporteModel = new reporteModel($this->conexion);
-       $resultado = $reporteModel->insertarReporte($id_bic,$fecha_rep,$fecha_rob,$lugar,$hora,$comentarios);
+       $resultado = $reporteModel->insertarReporte($id_bic,$fecha_rep,$fecha_rob,$Estado,$Municipio,$hora,$comentarios);
        if ($resultado) {
             error_log("El reporte se registro correctamente");
             $reporteModel->actualizarEstadoBic($id_bic);

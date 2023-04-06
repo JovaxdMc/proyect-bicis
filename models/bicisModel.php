@@ -17,9 +17,21 @@ class bicisModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         
     }
+    public function obtenerBicisReportadas($extra) {
+        $sql = "SELECT bicis.id_bic, img_prin, marca, modelo,talla, year, rodada, estatus, fecha_reporte, fecha_robo, Estado, Municipio, estado_rep 
+        FROM bicis  
+        INNER JOIN reportes 
+        ON bicis.id_bic = reportes.id_bic 
+        WHERE estatus = 'Reportado' AND estado_rep='activo' ".$extra;
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
 
     public function obtenerBiciReporteJson($id,$param) {
-        $sql = "SELECT bicis.id_bic, img_prin, num_serie, marca, modelo, talla, year, rodada, estatus, comprobante, id_reporte, fecha_reporte, fecha_robo, lugar, hora, comentarios, estado_rep 
+        $sql = "SELECT bicis.id_bic, img_prin, num_serie, marca, modelo, talla, year, rodada, estatus, comprobante, id_reporte, fecha_reporte, fecha_robo, Estado, Municipio, hora, comentarios, estado_rep 
         FROM bicis  
         INNER JOIN reportes 
         ON bicis.id_bic = reportes.id_bic 
@@ -46,6 +58,16 @@ class bicisModel {
         //error_log("Resultado de la consulta: " . json_encode($resultados));
         return json_encode($resultados);
     }
+
+    public function obtenerMarcas() {
+        //error_log($id_bic.':'.$param);
+        $sql = "SELECT DISTINCT marca FROM bicis WHERE estatus='Reportado'";
+        //error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     
 
     
