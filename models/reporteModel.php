@@ -16,17 +16,34 @@ class reporteModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         
+    } 
+    public function obtenerEstados() {
+        $sql = "SELECT DISTINCT Estado FROM reportes";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
+    public function obtenerMunicipios() {
+        $sql = "SELECT DISTINCT Municipio FROM reportes";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
     }
 
     
 
-    public function insertarReporte($id_bic,$fecha_rep,$fecha_rob,$lugar,$hora,$comentarios) {
-        $sql = "INSERT INTO reportes VALUES ('null',:id_bic,:fecha_rep,:fecha_rob,:lugar,:hora,:comentarios,'activo')";
+    public function insertarReporte($id_bic,$fecha_rep,$fecha_rob,$Estado,$Municipio,$hora,$comentarios) {
+        $sql = "INSERT INTO reportes VALUES ('null',:id_bic,:fecha_rep,:fecha_rob,:Estado,:Municipio,:hora,:comentarios,'activo')";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":id_bic", $id_bic);
         $stmt->bindParam(":fecha_rep", $fecha_rep);
         $stmt->bindParam(":fecha_rob", $fecha_rob);
-        $stmt->bindParam(":lugar", $lugar);
+        $stmt->bindParam(":Estado", $Estado);
+        $stmt->bindParam(":Municipio", $Municipio);
         $stmt->bindParam(":hora", $hora);
         $stmt->bindParam(":comentarios", $comentarios);
         $stmt->execute();

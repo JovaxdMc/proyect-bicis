@@ -1,3 +1,64 @@
+    // Esperar a que la página se cargue completamente
+    window.onload = function() {
+      llenarMarcas();
+      llenarEstados();
+      llenarMunicipios();
+    };
+
+
+    function llenarMarcas(){
+      // Obtener el elemento select
+      var selectMarca = document.getElementById("Marca");
+    
+      // Llamar a la función PHP que genera las opciones del select
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/BicRobmvc/controllers/filtroController.php?accion=llenarMarca", true);
+      xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          // Almacenar el resultado generado en una variable JavaScript
+          var opciones = this.responseText;
+          //console.log(opciones);
+          // Agregar el resultado al select utilizando innerHTML
+          selectMarca.innerHTML = opciones;
+        }
+      };
+      xhr.send();
+    }
+    function llenarEstados(){
+      // Obtener el elemento select
+      var selectMarca = document.getElementById("Estado");
+      // Llamar a la función PHP que genera las opciones del select
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/BicRobmvc/controllers/filtroController.php?accion=llenarEstados", true);
+      xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          // Almacenar el resultado generado en una variable JavaScript
+          var opciones = this.responseText;
+          //console.log(opciones);
+          // Agregar el resultado al select utilizando innerHTML
+          selectMarca.innerHTML = opciones;
+        }
+      };
+      xhr.send();
+    }
+    function llenarMunicipios(){
+      // Obtener el elemento select
+      var selectMarca = document.getElementById("Municipio");
+    
+      // Llamar a la función PHP que genera las opciones del select
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/BicRobmvc/controllers/filtroController.php?accion=llenarMunicipios", true);
+      xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          // Almacenar el resultado generado en una variable JavaScript
+          var opciones = this.responseText;
+          //console.log(opciones);
+          // Agregar el resultado al select utilizando innerHTML
+          selectMarca.innerHTML = opciones;
+        }
+      };
+      xhr.send();
+    }
 // Obtener el formulario y el botón de búsqueda
 var form = document.querySelector(".d-flex");
 var btnBuscar = document.querySelector("#buscar");
@@ -84,3 +145,57 @@ form.addEventListener("submit", function(event) {
         console.error(error);
       });
     });    
+
+
+    function buscar() {
+      var Estado = document.getElementById("Estado").value;
+      var Marca = document.getElementById("Marca").value;
+      var Municipio = document.getElementById("Municipio").value;
+
+      if(Estado=="def"){
+        EstadoF=" ";
+      }else{
+        var EstadoF = " AND Estado='"+Estado+"' ";
+      }
+
+      if(Marca=="def"){
+        MarcaF=" ";
+      }else{
+        var MarcaF = " AND Marca='"+Marca+"' ";
+      }
+
+      if(Municipio=="def"){
+        MunicipioF=" ";
+      }else{
+        var MunicipioF = " AND Municipio='"+Municipio+"' ";
+      }
+     
+      
+     
+      // Obtener el valor del input
+      var panel = document.getElementById("bicicletas");
+      
+      // Crear una solicitud AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/BicRobmvc/controllers/biciController.php?accion=selectIndex", true);
+    
+      // Configurar los encabezados de la solicitud
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+      // Configurar la función de devolución de llamada para procesar la respuesta
+      xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          // Procesar la respuesta
+          //console.log(this.responseText);
+          panel.innerHTML=this.responseText;
+        }
+      };
+    
+      // Crear la cadena de consulta para enviar los datos
+      var data = "extra="+MarcaF+EstadoF+MunicipioF;
+      //console.log(data);
+    
+      // Enviar la solicitud
+      xhr.send(data);
+    }
+

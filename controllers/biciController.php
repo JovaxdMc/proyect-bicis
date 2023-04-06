@@ -14,10 +14,8 @@ class biciController {
                 $extra=$_POST["extra"];
                 $this->select($id,$param,$extra);
             }else if($accion == 'selectIndex'){
-                $id=$_POST["id"];
-                $param=$_POST["param"];
                 $extra=$_POST["extra"];
-                $this->selectIndex($id_u,$param,$orden);
+                $this->selectIndex($extra);
             }else if($accion == 'SelectRepJson'){
                 $id = $_POST["id"];
                 $param = $_POST["param"];
@@ -113,23 +111,24 @@ class biciController {
             throw new Exception('Error de conexión');
         }
     }
-    public function selectIndex($id_u,$param,$orden){
+    public function selectIndex($extra){
         include_once(__DIR__ . '/../models/bicisModel.php');
-        if (!empty($id_u)) {
             $bicisModel = new bicisModel($this->conexion);
-            $resultado = $bicisModel->obtenerBicis($id_u,$param,$orden);           
+            $resultado = $bicisModel->obtenerBicisReportadas($extra);           
             foreach ($resultado as $fila) {    
                 $id_bic=$fila["id_bic"];
                 $fotoPrinc=$fila["img_prin"];
-                $num_serie=$fila["num_serie"];
                 $marca=$fila["marca"];
                 $modelo=$fila["modelo"];
                 $talla=$fila["talla"];
                 $year=$fila["year"];
                 $rodada=$fila["rodada"];
-                $estatus=$fila["estatus"];
-                $fecha_reg=$fila["fecha_reg"];
-                $comprobante=$fila["comprobante"];
+                $fecha_rep=$fila["fecha_reporte"];
+                $fecha_robo=$fila["fecha_robo"];
+                $Estado=$fila["Estado"];
+                $Municipio=$fila["Municipio"];
+
+                
 
                 echo'<div class="card-container">';
                 echo'<div class="card bg-dark text-white border-secondary border border-2" style="width: 18rem;">';
@@ -137,17 +136,16 @@ class biciController {
                 echo'<div class="imgContCard">';
                 echo'<img src="/BicRobmvc/views/src/imgBicis/'.$fotoPrinc.'" alt="Imagen de la bicicleta" class="card-img-top text-center">';
                 echo'</div>';
-                echo'<p class="estatus">'.$estatus.'</p>';
-                echo'<p class="fecha">'.$fecha_reg.'</p>';
+                echo'<p class="">Fecha de reporte: '.$fecha_rep.'</p>';
+                echo'<p class="">Fecha del robo: '.$fecha_robo.'</p>';
+                echo'<p class="">Lugar donde se robo:</p>';
+                echo'<p class="">'.$Municipio.' '.$Estado.'</p>';
                 echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
                 echo'</div>';
                 echo'</div>';
                 
             }
-        } else {
-            $error = $bicisModel->conexion->errorInfo();
-            throw new Exception('Error de conexión');
-        }
+        
     }
 
     public function selectU($id_u,$param,$orden){

@@ -63,8 +63,12 @@
                         <form action="/BicRobmvc/controllers/reporteController.php?accion=insert" method="POST"
                             class="formReporte">
                             <div class="mb-3">
-                                <label for="lugar" class="form-label w-100">Lugar del robo</label>
-                                <input type="text" name="lugar" class="form-control w-100" required>
+                                <label for="lugar" class="form-label w-100">Estado</label>
+                                <input type="text" name="Estado" class="form-control w-100" required>
+                            </div> 
+                            <div class="mb-3">
+                                <label for="lugar" class="form-label w-100">Municipio</label>
+                                <input type="text" name="Municipio" class="form-control w-100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="fecha_rob" class="form-label w-100">Fecha</label>
