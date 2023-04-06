@@ -2,6 +2,7 @@
     include_once './views/publicas/index/header.php';
 ?>
 
+
 <div class="container">
     <div class="col" id="resultado-busqueda"></div>
     <div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
@@ -28,42 +29,39 @@
 
 </div>
 
-
-<div class="panel">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-                <img src="./views/src/imgCarrusel/carrusel (1).jpeg" class="d-block w-100">
-            </div>
-            <div class="carousel-item" data-bs-interval="10000">
-                <img src="./views/src/imgCarrusel/carrusel (2).jpeg" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="./views/src/imgCarrusel/carrusel (3).jpeg" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="./views/src/imgCarrusel/carrusel (4).jpeg" class="d-block w-100">
-            </div>
+<div id="carouselExampleAutoplaying" class="carousel slide carru" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/BicRobmvc/views/src/imgCarrusel/carrusel1.jpeg" class="d-block w-100">
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="carousel-item">
+            <img src="/BicRobmvc/views/src/imgCarrusel/carrusel2.jpeg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="/BicRobmvc/views/src/imgCarrusel/carrusel3.jpeg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="/BicRobmvc/views/src/imgCarrusel/carrusel4.jpeg" class="d-block w-100">
+        </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
-<div class="row">
-    <div class="col-7">
+
+
+<div class="row justify-content-between p-2 m-4">
+    <div class=" col-7 panelactreciente">
         <h3 class="text-center">Actividad Reciente</h3>
-
-
-        <div class="panelDeBicis">
+        <div class="panel">
             <?php
                     //echo "/BicRobmvc/controllers/biciController.php";
                     include_once ("./controllers/biciController.php");
@@ -73,14 +71,12 @@
                 ?>
         </div>
     </div>
-    <div class="col-5">
-        <div class="panel">
-            <h3>Segundo panel pa la info y consejos o o que se</h3>
-            <h4>Segundo panel pa la info y consejos o o que se</h4>
+    <div class="col-4 ">
+        <div class="panel row text-white info">
+            <img src="/BicRobmvc/views/src/imgSis/infogra.jpeg" alt="">
         </div>
     </div>
 </div>
-
 
 
 <?php 
