@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+}
+
+.paneluno{
+    background-color: #1f2021;
+    border: 2px dashed #4e4e4e;
+    border-radius: 5px;
+}
+.navegacion {
+    background-color: #1f2021;
+    color: #ffffff;
+    align-items: end;
+}
+
+.panelav{
+    align-items: end;
+    text-align: end;
+}
