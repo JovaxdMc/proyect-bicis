@@ -69,7 +69,14 @@ class bicisModel {
     }
 
     
-
+    public function editarNs($id_b,$ns){
+        $sql = "UPDATE bicis SET num_serie = :num_s WHERE id_bic= :id_b";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_b", $id_b);
+        $stmt->bindParam(":num_s", $ns);
+        $stmt->execute();
+        return $stmt;
+    }
     
 
     public function insertarBici($img_prin,$num_s,$marca,$modelo,$talla,$year,$rodada,$comprobante,$fech_reg,$id_u) {

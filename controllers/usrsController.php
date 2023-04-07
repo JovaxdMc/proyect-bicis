@@ -6,7 +6,6 @@ class usrsController {
         $this->conexion = $conexion;
         if (isset($_GET['accion'])){
             $accion=$_GET['accion'];
-
             error_log("valor recibido= ".$accion);
             if ($accion == 'select') {
                 $id=$_POST["id"];
@@ -22,12 +21,13 @@ class usrsController {
                     $id=$_GET["id"];
                     $param=$_GET["param"];
                     $this->deleteRep($id,$param);
-
                 }
             }else if($accion == 'update'){
                 $this->updateRep();
             }else if($accion == 'updtImgPerf'){
                 $this->updtImgPerf();
+            }else if($accion == 'updtDatosContacto'){
+                $this->updtDatosContacto();
             }
         } 
     }
@@ -67,13 +67,6 @@ class usrsController {
             }
         }
 
-    public function deleteRep(){
-       
-    }
-
-    public function updateRep(){
-       
-    }
 
     public function deleteImgServ($id_u){
         include_once(__DIR__ . '/../models/usrsModel.php');
@@ -122,9 +115,34 @@ class usrsController {
                 error_log("Error al subir la foto nueva al servidot". $_FILES["imgN"]["error"]);
         }        
     }      
+    
+    public function updtDatosContacto(){
+        include_once(__DIR__ . '/../models/usrsModel.php');
+        $id_u = $_POST['id_u'];
+        $Estado = $_POST['Estado'];
+        $Municipio = $_POST['Municipio'];
+        $Correo = $_POST['Correo'];
+        $Telefono = $_POST['Telefono'];
+
+        $usrsModel = new usrsModel($this->conexion);
+        $resultado = $usrsModel->editarUsrDatosCont($id_u,$Estado,$Municipio,$Correo,$Telefono);
+        if ($resultado) {
+            session_start();
+            $_SESSION["Estado"]=$Estado;
+            $_SESSION["Municipio"]=$Municipio;
+            $_SESSION["correo"]=$Correo;
+            $_SESSION["telefono"]=$Telefono;
+            session_write_close();
+
+            echo "ok";
+        } else {
+            echo "error";
+            }
+        }
+       
+    }      
         
 
-    }
     
 try {
     $conexion = new Conexion();

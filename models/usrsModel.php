@@ -21,7 +21,7 @@ class usrsModel {
     
 
     public function usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,$nonf) {
-        $sql = "INSERT INTO usuarios VALUES ('null',:Nombr,:apeM,:apeP,:estado,:ciudad,:mail,:tel,:userN,:pas1,'usuario',:nomf)";
+        $sql = "INSERT INTO usuarios VALUES ('null',:Nombr,:apeP,:apeM,:estado,:ciudad,:mail,:tel,:userN,:pas1,'usuario',:nomf)";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":Nombr", $nombre);
         $stmt->bindParam(":apeM", $apeM);
@@ -48,13 +48,23 @@ class usrsModel {
     }
 
 
-
-
     public function editarImgUsr($id_u,$imgN) {
         $sql = "UPDATE usuarios SET imgPerfil=:imgN WHERE id=:id_iu";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":imgN", $imgN);
         $stmt->bindParam(":id_iu", $id_u);
+        $stmt->execute();
+        return $stmt;
+    }
+    
+    public function editarUsrDatosCont($id_u,$Estado,$Municipio,$correo,$telefono) {
+        $sql = "UPDATE usuarios SET Estado=:Estado , Municipio=:Municipio , correo = :correo , telefono = :telefono WHERE id=:id_u";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_u", $id_u);
+        $stmt->bindParam(":Estado", $Estado);
+        $stmt->bindParam(":Municipio", $Municipio);
+        $stmt->bindParam(":correo", $correo);
+        $stmt->bindParam(":telefono", $telefono);
         $stmt->execute();
         return $stmt;
     }

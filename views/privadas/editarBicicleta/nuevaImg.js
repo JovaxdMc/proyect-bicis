@@ -1,3 +1,4 @@
+
 const imageInput = document.getElementById("image");
 const previewImage = document.getElementById("preview");
 
