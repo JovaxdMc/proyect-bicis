@@ -6,8 +6,13 @@ body {
     background-color: #000000;
 }
 .modal-body {
-  max-height: 500px;
+  height: 100%;
+  max-height: 100%;
   overflow-y: auto;
+}
+.pnencab{
+  background-color: #4CAF50;
+  color: #ffffff;
 }
 .card-img-fixed-size{
   width: 80%;
@@ -18,7 +23,7 @@ body {
 .modal-header{
   background-color: #0a4757;
   color: #ffffff;
-  border: #343434 1px solid;
+  border: #135b6b 1px solid;
 }
 .eymen{
   background-color: #343434;
@@ -55,13 +60,11 @@ body {
 
   #loginForm {
     box-sizing: border-box;
-    width: 400px;
-    height: 500px;
-    margin: 50px auto;
+    width: auto;
+    height: auto;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,7 +94,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
-
+  
   a {
     font-size: 0.8em;
     text-decoration: none;
