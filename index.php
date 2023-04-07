@@ -66,7 +66,7 @@
                     //echo "/BicRobmvc/controllers/biciController.php";
                     include_once ("./controllers/biciController.php");
                     $biciController = new biciController($conexion);
-                    $biciController->selectIndex("Reportado","estatus","ORDER BY id_bic ASC"); // llama al método select() del controlador
+                    $biciController->selectIndex(""); // llama al método select() del controlador
                           
                 ?>
         </div>
