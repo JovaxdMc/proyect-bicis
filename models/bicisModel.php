@@ -18,7 +18,7 @@ class bicisModel {
         
     }
     public function obtenerBicisReportadas($extra) {
-        $sql = "SELECT bicis.id_bic, img_prin, marca, modelo,talla, year, rodada, estatus, fecha_reporte, fecha_robo, Estado, Municipio, estado_rep 
+        $sql = "SELECT bicis.id_bic, img_prin, marca, id_reporte, modelo,talla, year, rodada, estatus, fecha_reporte, fecha_robo, Estado, Municipio, estado_rep 
         FROM bicis  
         INNER JOIN reportes 
         ON bicis.id_bic = reportes.id_bic 

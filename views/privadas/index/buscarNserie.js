@@ -151,6 +151,7 @@ form.addEventListener("submit", function(event) {
       var Estado = document.getElementById("Estado").value;
       var Marca = document.getElementById("Marca").value;
       var Municipio = document.getElementById("Municipio").value;
+      var Orden = document.getElementById("Orden").value;
 
       if(Estado=="def"){
         EstadoF=" ";
@@ -192,7 +193,7 @@ form.addEventListener("submit", function(event) {
       };
     
       // Crear la cadena de consulta para enviar los datos
-      var data = "extra="+MarcaF+EstadoF+MunicipioF;
+      var data = "extra="+MarcaF+EstadoF+MunicipioF+" "+Orden;
       //console.log(data);
     
       // Enviar la solicitud

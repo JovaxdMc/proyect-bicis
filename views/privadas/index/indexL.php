@@ -106,7 +106,7 @@
                     <div class="col-md-12">
                         <h4>Filtrar por: </h4>
                         <label for="Marca">Marca:</label>
-                        <select id="Marca" name="Marca">
+                        <select id="Marca" name="Marca" >
                             <option value=" ">---------</option>
                         </select>
                         <label for="Estado">Estado:</label>
@@ -117,10 +117,10 @@
                         <select id="Municipio" name="Municipio">
                             <option value=" ">---------</option>
                         </select>
-                        <label for="Marca">Ordenar:</label>
-                        <select id="Marca" name="Marca">
-                            <option value="ORDER BY id_reporte ASC">Mas recientes primero</option>
-                            <option value="ORDER BY id_reporte DESC">Mas antiguos primero</option>
+                        <label for="Orden">Ordenar:</label>
+                        <select id="Orden" name="Orden">
+                            <option value=" ORDER BY id_reporte ASC">Mas recientes primero</option>
+                            <option value=" ORDER BY id_reporte DESC">Mas antiguos primero</option>
                         </select>
 
                         <button onclick="buscar()">Aplicar Filtro</button>
@@ -130,7 +130,7 @@
                     //echo "/BicRobmvc/controllers/biciController.php";
                     include_once ("../../../controllers/biciController.php");
                     $biciController = new biciController($conexion);
-                    $biciController->selectIndex("ORDER BY id_bic ASC"); // llama al método select() del controlador 
+                    $biciController->selectIndex("ORDER BY id_reporte DESC"); // llama al método select() del controlador 
                 ?> </div>
             </div>
         </div>
