@@ -39,6 +39,7 @@
         $fecha_reg = $resultado_selectU[0]['fecha_reg'];
         $comprobante = $resultado_selectU[0]['comprobante'];
 ?>
+
             <!-- Panel 1 de info bici e imagen-->
             <div class="container ">
                 <div class="col">
@@ -58,8 +59,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <b>Numero de serie:</b> 
-                                                <?php
+                                                <b>Numero de serie:</b> <?php
                                                 if($num_serie==""){
                                                     echo '<button class="btn btn-success btn-sm" id="btnAddNs" >Agregar numero de serie</button>';
                                                 }else{
@@ -89,6 +89,13 @@
                                                 <?php echo $_SESSION["Nombre"]." ".$_SESSION["Apellido_p"]." ".$_SESSION["Apellido_m"] ?>
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                    data-bs-target="#modalPDF"> Ver comprobante </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -106,7 +113,7 @@
                         <!-- Titulo panel 2 bicis y demas -->
                         <div class="container  justify-content-center ">
                             <div class="row misbic">
-                                <h5 class="text-center fs-1">Mis Bicicletas:</h5>
+                                <h5 class="text-center fs-1">Fotografias de la bicicleta:</h5>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modalNbic">AGREGAR FOTOS</button>
                             </div>
@@ -121,36 +128,36 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" style="max-height: 100%; overflow-y: auto;">
-                                        <form action="post" method="POST" enctype="multipart/form-data"
-                                             id="formAddImg">
+                                        <form action="post" method="POST" enctype="multipart/form-data" id="formAddImg">
                                             <!-- "Formulario del boton (Agregar)" -->
-                                            
                                             <div class="mb-3">
                                                 <input type="hidden" name="id_bic" id="id_bic" value=<?php echo $idB ?>>
                                                 <label for="image" class="form-label">
                                                     <h5>Imagen:</h5>
                                                 </label>
-                                                <input type="file" id="image" name="image" accept="image/*" class="form-control" required>
-                                                <img id="preview" src="#" alt="Vista previa de la imagen" class="vistaIMG">
+                                                <input type="file" id="image" name="image" accept="image/*"
+                                                    class="form-control" required>
+                                                <img id="preview" src="#" alt="Vista previa de la imagen"
+                                                    class="vistaIMG">
                                             </div>
-
                                             <div class="mb-3">
                                                 <label for="title" class="form-label">
                                                     <h5>Título: </h5>
                                                 </label>
-                                                <input type="text" id="title" name="title" class="form-control" required>
+                                                <input type="text" id="title" name="title" class="form-control"
+                                                    required>
                                             </div>
-
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">
                                                     <h5>Descripción:</h5>
                                                 </label>
-                                                <textarea id="description" name="description" class="form-control" required></textarea>
+                                                <textarea id="description" name="description" class="form-control"
+                                                    required></textarea>
                                             </div>
-
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Agregar</button>
-                                                <button id="close-form" class="btn btn-danger" type="button" data-bs-dismiss="modal">Cerrar</button>
+                                                <button id="close-form" class="btn btn-danger" type="button"
+                                                    data-bs-dismiss="modal">Cerrar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -198,6 +205,24 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalPDF" tabindex="-1" role="dialog" aria-labelledby="modalPDFLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalPDFLabel">Comprobante</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <embed src="/BicRobmvc/views/src/comprobantes/<?php echo $comprobante; ?>"
+                                        type="application/pdf"  />
                                 </div>
                             </div>
                         </div>

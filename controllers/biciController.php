@@ -23,8 +23,8 @@ class biciController {
             }else if($accion == 'SelectRepUsrJson'){
                 $id_b = $_POST["id_b"];
                 $this->SelectRepUsrJson($id_b);
-            }else if($accion == 'updt'){
-                $this->insertImgs();
+            }else if($accion == 'updtNs'){
+                $this->updtNs();
             }
         } else {
             // La clave 'accion' no está definida en $_GET
@@ -41,12 +41,20 @@ class biciController {
             $bicisModel = new bicisModel($this->conexion);
             $resultado = $bicisModel->obtenerBiciReporteJson($id,$param);               
             // Decodificar la cadena JSON en una matriz PHP
-            echo json_encode($resultado);
-           
             }else {
             $error = $bicisModel->conexion->errorInfo();
             throw new Exception('Error de conexión');
         }
+    }
+     public function updtNs(){
+        $id_b = $_POST["id_b"];
+        $ns = $_POST["ns"];
+        include_once(__DIR__ . '/../models/bicisModel.php');
+        $bicisModel = new bicisModel($this->conexion);
+        $resultado = $bicisModel->editarNs($id_b,$ns);               
+        // Decodificar la cadena JSON en una matriz PHP 
+
+        
     }
     
     public function SelectRepUsrJson($id_b){
