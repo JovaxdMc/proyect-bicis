@@ -58,7 +58,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <b>Numero de serie:</b> <?php echo $num_serie ?>
+                                                <b>Numero de serie:</b> 
+                                                <?php
+                                                if($num_serie==""){
+                                                    echo '<button class="btn btn-success btn-sm" id="btnAddNs" >Agregar numero de serie</button>';
+                                                }else{
+                                                   echo $num_serie;
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -78,7 +85,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <b>Dueño:</b>
+                                                <b>Propietario:</b>
                                                 <?php echo $_SESSION["Nombre"]." ".$_SESSION["Apellido_p"]." ".$_SESSION["Apellido_m"] ?>
                                             </div>
                                         </div>
@@ -203,5 +210,6 @@
     <!-- <script src="./cargarCards.js"></script> -->
     <script src="./cargaImgs.js"></script>
     <script src="./nuevaImg.js"></script>
+    <script src="./datosbici.js"></script>
 
 </html>

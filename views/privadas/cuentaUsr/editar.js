@@ -5,6 +5,9 @@ var idu = document.getElementById('id_u');
 id="imgPerf"
 var archivoSeleccionado;
 
+var miModalEd = document.getElementById('editarDatosU');
+var modalEdit = new bootstrap.Modal(miModalEd);
+
 btnEditFotoUsr.addEventListener("click",function (event){
     var input = document.createElement('input');
     input.type = 'file';
@@ -68,4 +71,76 @@ btnGuardFotoUsr.addEventListener("click",function(event){
       });
 });
 
+btnActDatos = document.getElementById("actdatos");
+
+
+btnActDatos.addEventListener("click",function(event){
+  event.preventDefault();
+
+  inptEstado = document.getElementById("Estado").value;
+  inptMunicipio = document.getElementById("Municipio").value;
+  inptCorreo = document.getElementById("Correo").value;
+  inpttelefono= document.getElementById("telefono").value;
+
+  const formData = new FormData();
+  formData.append("id_u", idu.value);
+  formData.append("Estado", inptEstado);
+  formData.append("Municipio", inptMunicipio);
+  formData.append("Correo", inptCorreo);
+  formData.append("Telefono", inpttelefono);
+
+  fetch("/BicRobmvc/controllers/usrsController.php?accion=updtDatosContacto", {
+      method: "POST",
+      body: formData
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error al enviar el formulario");
+        }
+        return response.text();
+      })
+      .then(data => {
+        console.log(data);
+        if(data=="ok"){
+          Swal.fire({
+            title:'<h3 style="color:white;"> Datos actualizados correctamente</h3>',
+            text: '',
+            icon: 'success',
+            background:'#000',
+            backdrop:true,
+            confirmButtonColor:'#068',
+            showConfirmButton: true// mostrar el botón de confirmación
+          }).then((result) => { // manejar el resultado del botón de confirmación
+            if (result.isConfirmed) { // si el botón de confirmación es aceptado
+              location.reload(); // recargar la página
+            }
+          });
+          
+          modalEdit.hide();
+          //location.reload();
+        }else{
+          console.error(error);
+          Swal.fire({
+            title:'<h3 style="color:white;"> Error al actualizar datos</h3>',
+            text: '',
+            icon: 'error',
+            background:'#000',
+            backdrop:true,
+            confirmButtonColor:'#068'
+          });
+        }
+       
+      })
+      .catch(error => {
+        console.error(error);
+        Swal.fire({
+          title:'<h3 style="color:white;"> Error al actualizar datos</h3>',
+          text: '',
+          icon: 'error',
+          background:'#000',
+          backdrop:true,
+          confirmButtonColor:'#068'
+        });
+      });
+});
 

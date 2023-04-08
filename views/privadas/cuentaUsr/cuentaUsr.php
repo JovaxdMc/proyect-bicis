@@ -33,8 +33,8 @@ include_once ('../res/nav.php');
                                             <i class="fas fa-pencil-alt"></i></button>
                                         <button class="save-btn float-end" data-id="'.$id_img.'" id="btnGuardFoto">
                                             <i class="fa-solid fa-floppy-disk"></i></button>
-
-                                        <img class="rounded-circle"  style="width: 200px; height: 200px; overflow: hidden;"
+                                        <img class="rounded-circle"
+                                            style="width: 200px; height: 200px; overflow: hidden;"
                                             src="/BicRobmvc/views/src/imgUsrs/<?php echo $_SESSION["imgPerfil"]?>"
                                             alt="Imagen de perfil" id="imgPerf">
                                     </div>
@@ -68,8 +68,9 @@ include_once ('../res/nav.php');
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <button type="button" class="btn btn-info m-4">Editar
-                                                        Informacion</button>
+                                                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                                        data-bs-target="#editarDatosU"> Editar Informacion
+                                                    </button>                                       
                                                 </div>
                                             </div>
                                         </div>
@@ -99,6 +100,40 @@ include_once ('../res/nav.php');
                                 ?> </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade " id="editarDatosU" tabindex="-1" aria-labelledby="editarDatosU" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarDatosU">Editar informacion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="max-height: 100%; overflow-y: auto;">
+                        <form action="" method="post">
+                            <input type="hidden" name="id_u" id="id_u" value="<?php echo $_SESSION['id'] ?>">
+                            <div class="mb-3">
+                                <label for="Estado" class="form-label">Estado:</label>
+                                <input type="text" name="Estado" id="Estado" class="form-control" required value="<?php echo $_SESSION['Estado'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Municipio" class="form-label">Municipio:</label>
+                                <input type="text" name="Municipio" id="Municipio" class="form-control" required value="<?php echo $_SESSION['Municipio']?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Correo" class="form-label">Correo:</label>
+                                <input type="text" name="Correo" id="Correo" class="form-control" required value="<?php echo $_SESSION['correo']?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono de contacto:</label>
+                                <input type="text" name="telefono" id="telefono" class="form-control" required value="<?php echo $_SESSION['telefono']?>">
+                            </div>
+
+                            <button id="actdatos" class="btn btn-success">Actualizar datos</button>
+                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -170,6 +205,5 @@ include_once ('../res/nav.php');
     </body>
     <script src="./vistasPrev.js"></script>
     <script src="./editar.js"></script>
-
 
 </html>
