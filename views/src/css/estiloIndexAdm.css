@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(0, 0, 0);
+}
+.PrimerPanel{
+    color: #ffffff;
+    border: 2px dashed #4e4e4e;
+    background-color: #1f2021;
+    border-radius: 5px;
+}
+.Iconosy{
+    align-items: center;
+    text-align: center;
+    border: 2px dashed #4e4e4e;
+    border-radius: 5px;
+}
+.tit{
+    align-items: center;
+    text-align: center;
+}
+.imags{
+    width: 80%;
+    height: auto;
+    max-width: 100%;
+}
+.botones h4{
+    color: #ffffff;
+}
+.bordboton{
+    border: #4e4e4eda 4px solid;
+    border-radius: 5px;
+    color: #ffffff;
+}
