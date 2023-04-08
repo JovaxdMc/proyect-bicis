@@ -40,7 +40,11 @@ class LoginController {
                 $_SESSION["usuario"]=$resultado["usuario"];
                 $_SESSION["tipo_u"]=$resultado["tipo_u"];
                 $_SESSION["imgPerfil"]=$resultado["imgPerfil"];
-                header('location: ../views/privadas/index/indexL.php');   
+                if($_SESSION["tipo_u"]=="usuario"){
+                    header('location: ../views/privadas/index/indexL.php');
+                }else if($_SESSION["tipo_u"]=="admin"){
+                    header('location: ../views/privadas/index/indexL.php');
+                }   
             } else {
                 echo "Usuario o contraseña incorrectos";
             }
