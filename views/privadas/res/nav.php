@@ -27,7 +27,6 @@
                     <input type="hidden" id="id_usr_nav" value="<?php echo $_SESSION["id"]?>">
                 </a>
             </li>
-            
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -38,7 +37,6 @@
                     <!-- Las notificaciones se agregarán aquí dinámicamente -->
                 </ul>
             </li>
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -52,4 +50,27 @@
         </ul>
     </div>
 </nav>
+
+<div class="modal fade" id="modalInfoNotf" tabindex="-1" role="dialog" aria-labelledby="modalInfoNotfLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalInfoNotfLabel">Detalles de la notificación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Fecha: <span id="fechaN"></span></p>
+                <p>Hora: <span id="horaN"></span></p>
+                <p>Contenido: <span id="contN"></span></p>
+                <p>Bicicleta: <span id="biciN"></span></p>
+                <div class="imgs"></div>
+
+                <button class="btn btn-success" data-bs-dismiss="modal">Marcar como leida</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="/BicRobmvc/views/src/js/notificacionesNaV.js"></script>
+<script src="/BicRobmvc/views/src/js/cargarInfo.js"></script>

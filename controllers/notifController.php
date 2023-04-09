@@ -15,6 +15,12 @@ class notifController {
             }else if($accion == 'select'){
                 $id_usrR = $_GET["idUsr_R"];
                 $this->SelecNotif($id_usrR);
+            }else if($accion == 'selectO'){
+                $id_notif = $_GET["id_notif"];
+                $this->SelecNotifOnce($id_notif);
+            }else if($accion == 'selectImgs'){
+                $id_notif = $_GET["id_notif"];
+                $this->SelecNotifImgs($id_notif);
             }else if($accion == 'selectIndex'){
                 
             }else if($accion == 'SelectRepJson'){
@@ -83,6 +89,34 @@ class notifController {
         if (!empty($id_usrR)) {
             $notifModel = new notifModel($this->conexion);
             $resultado = $notifModel->selectNotif($id_usrR);               
+            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
+           
+            }else {
+            $error = $bicisModel->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        }
+    }
+    public function SelecNotifOnce($id_notif){
+
+        include_once(__DIR__ . '/../models/notifModel.php');
+        if (!empty($id_notif)) {
+            $notifModel = new notifModel($this->conexion);
+            $resultado = $notifModel->selectNotif1($id_notif);               
+            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
+           
+            }else {
+            $error = $bicisModel->conexion->errorInfo();
+            throw new Exception('Error de conexión');
+        } 
+    }
+        public function SelecNotifImgs($id_notif){
+
+        include_once(__DIR__ . '/../models/notifModel.php');
+        if (!empty($id_notif)) {
+            $notifModel = new notifModel($this->conexion);
+            $resultado = $notifModel->selectImgNotif($id_notif);               
             // Decodificar la cadena JSON en una matriz PHP
             echo json_encode($resultado);
            

@@ -31,11 +31,19 @@ function updateNotifications() {
                  for (var i = 0; i < count; i++) {
                      var notification = notifications[i];
                      var listItem = document.createElement("li");
+                     id = notification["id_notif"];
                      cont = notification["contenido"];
                      fecha = notification["fecha"];
                      hora = notification["hora"];
+                     marca = notification["marca"];
+                     modelo = notification["modelo"];
+                     anio = notification["year"];
 
-                     listItem.innerHTML = '<a class="dropdown-item" href="#">' + 'fecha: '+fecha +'     Hora: '+ hora  +'     Contenido: '+ cont +'</a>';
+                     listItem.innerHTML = '<class="dropdown-item" onclick="cargarInfo(\''+id+'\')" style="">' 
+                                        + 'fecha: '+fecha +'     Hora: '+ hora  
+                                        +'<br> Nueva notificacion para la bicicleta:'
+                                        +'<br>'+ marca+' '+modelo+' '+anio+'</a>'
+                                        
                      list.appendChild(listItem);
                      actualizarNum();
                  }

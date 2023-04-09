@@ -18,10 +18,18 @@ class usrsModel {
         
     }
 
+    public function selectA($extra){
+        $sql = "SELECT * FROM usuarios WHERE tipo_u='usuario' $extra"  ;
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     
 
-    public function usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,$nonf) {
-        $sql = "INSERT INTO usuarios VALUES ('null',:Nombr,:apeP,:apeM,:estado,:ciudad,:mail,:tel,:userN,:pas1,'usuario',:nomf)";
+    public function usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,$tu,$nonf) {
+        $sql = "INSERT INTO usuarios VALUES (NULL,:Nombr,:apeP,:apeM,:estado,:ciudad,:mail,:tel,:userN,:pas1,:tu,:nomf)";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":Nombr", $nombre);
         $stmt->bindParam(":apeM", $apeM);
@@ -32,6 +40,7 @@ class usrsModel {
         $stmt->bindParam(":tel", $tel);
         $stmt->bindParam(":userN", $userN);
         $stmt->bindParam(":pas1", $pas1);
+        $stmt->bindParam(":tu", $tu);
         $stmt->bindParam(":nomf", $nonf);
         $stmt->execute();
         error_log($sql);

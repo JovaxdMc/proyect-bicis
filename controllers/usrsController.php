@@ -16,6 +16,15 @@ class usrsController {
             }else if($accion == 'insert'){
                 $this->insertUsr();
 
+            }else if($accion == 'registro'){
+               
+                
+                $this->registroUsr();
+
+            }else if($accion == 'selectA'){
+                $extra=$_POST["extra"];
+                $this->selectA($extra);
+
             }else if($accion == 'delete'){
                 if(isset($_GET["id"]) and isset($_GET["param"])){
                     $id=$_GET["id"];
@@ -32,9 +41,48 @@ class usrsController {
         } 
     }
 
-    public function selectRep($id,$columna,$extra){
-       
+   // public function selectA(){
+   //    include_once(__DIR__ . '/../models/usrsModel.php');
+   //     $usrsModel = new usrsModel($this->conexion);
+   //     $resultado = $usrsModel->selectA();               
+        // Decodificar la cadena JSON en una matriz PHP
+   //     echo json_encode($resultado);          
+   // }
+
+   public function selectA($extra) {
+    include_once(__DIR__ . '/../models/usrsModel.php');
+    $usrsModel = new usrsModel($this->conexion);
+    $resultado = $usrsModel->selectA($extra);
+    if (count($resultado) == 0) {
+        echo "error";
+    } else {
+    // Generar la tabla HTML
+    $tabla = '<table>';
+    $tabla .= '<thead><tr><th>Id</th><th>Nombre</th><th>Apellido_p</th><th>Apellido_m</th><th>Estado</th><th>Municipio</th><th>Correo</th><th>Teléfono</th><th>usuario</th><th>Acciones</th></tr></thead>';
+    $tabla .= '<tbody>';
+    
+    foreach ($resultado as $fila) {
+        $tabla .= '<tr>';
+        $tabla .= '<td data-id="' . $fila['id'] . '">' . $fila['id'] . '</td>';
+        $tabla .= '<td data-nombre="' . $fila['Nombre'] . '">' . $fila['Nombre'] . '</td>';
+        $tabla .= '<td data-apellidoPaterno="' . $fila['Apellido_p'] . '">' . $fila['Apellido_p'] . '</td>';
+        $tabla .= '<td data-apellidoMaterno="' . $fila['Apellido_m'] . '">' . $fila['Apellido_m'] . '</td>';
+        $tabla .= '<td data-estado="' . $fila['Estado'] . '">' . $fila['Estado'] . '</td>';
+        $tabla .= '<td data-municipio="' . $fila['Municipio'] . '">' . $fila['Municipio'] . '</td>';
+        $tabla .= '<td data-correoElectronico="' . $fila['correo'] . '">' . $fila['correo'] . '</td>';
+        $tabla .= '<td data-telefono="' . $fila['telefono'] . '">' . $fila['telefono'] . '</td>';
+        $tabla .= '<td data-nombreUsuario="' . $fila['usuario'] . '">' . $fila['usuario'] . '</td>';
+        $tabla .= '<td><button class="editar btn btn-success" onclick="Editar(' . $fila['id'] . ')"> <span class="fas fa-pencil-alt"></span></button> <button class="eliminar btn btn-danger" onclick="Eliminar(' . $fila['id'] . ')"><span class="fas fa-trash"></span></button></td>';
+        $tabla .= '</tr>';
+        
     }
+    
+    $tabla .= '</tbody></table>';
+    
+    // Devolver la tabla HTML
+    echo $tabla;
+    }
+}
 
     public function insertUsr(){
         include_once(__DIR__ . '/../models/usrsModel.php');
@@ -56,7 +104,7 @@ class usrsController {
         $nomf = $renom.".".$ext[1];
 
         $usrsModel = new usrsModel($this->conexion);
-        $resultado = $usrsModel->usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,$nomf);
+        $resultado = $usrsModel->usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,"usuario",$nomf);
         if ($resultado) {
             move_uploaded_file($temp_file, $ruta.'/'.$nomf); 
             //echo "<script>alert('El usuario se registro correctamente.');</script>";
@@ -64,6 +112,28 @@ class usrsController {
                 header("Location: /BicRobmvc/index.php");
             } else {
                 error_log("Error al registrar el usuario");
+            }
+        }
+        
+        public function registroUsr(){
+        include_once(__DIR__ . '/../models/usrsModel.php');
+        $nombre =$_POST["nombre"];
+        $apeM =$_POST["apellidoMaterno"];
+        $apeP =$_POST["apellidoPaterno"];
+        $estado =$_POST["estado"];
+        $ciudad =$_POST["municipio"];
+        $tel =$_POST["telefono"];
+        $mail =$_POST["correoElectronico"];
+        $userN =$_POST["nombreUsuario"];
+        $pas1 =$_POST["pass1"];
+        $tipoUsuario =$_POST["tipoUsuario"];
+        $usrsModel = new usrsModel($this->conexion);
+        $resultado = $usrsModel->usrRegistro($nombre,$apeP,$apeM,$estado,$ciudad,$mail,$tel,$userN,$pas1,$tipoUsuario,"");
+        if ($resultado) {
+            //echo "<script>alert('El usuario se registro correctamente.');</script>";
+                echo "correcto";
+            } else {
+                echo "error";
             }
         }
 

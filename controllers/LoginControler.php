@@ -43,7 +43,7 @@ class LoginController {
                 if($_SESSION["tipo_u"]=="usuario"){
                     header('location: ../views/privadas/index/indexL.php');
                 }else if($_SESSION["tipo_u"]=="admin"){
-                    header('location: ../views/privadas/index/indexL.php');
+                    header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
                 }   
             } else {
                 echo "Usuario o contraseña incorrectos";
@@ -59,4 +59,4 @@ class LoginController {
         header("location: ../index.php");
     }
 }
-echo "fuera";
+//echo "fuera";

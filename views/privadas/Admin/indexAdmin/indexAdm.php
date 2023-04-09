@@ -24,6 +24,7 @@
     </head>
     <body class="bg-black">
 
+        <?php include_once ("../recursos/navAdm.php"); ?>
 
 
         <div class="container">
@@ -35,7 +36,7 @@
                     <div class="row m-2">
                         <div class="col-6 ">
                             <h4>Administración de usuarios</h4>
-                            <a href="/views/privadas/Admin/AdmRegistroUsuarios/AdmRegUsuarios.html" class="btn w-100 bordboton" style="color:
+                            <a href="/BicRobmvc/views\privadas\Admin\admUsrs\admUsrs.php" class="btn w-100 bordboton" style="color:
                                 aliceblue;">
                                 <div class="container">
                                     <i class="fa-solid fa-users" style="color:
@@ -45,7 +46,7 @@
                         </div>
                         <div class="col-6 ">
                             <h4>Administración de Reportes</h4>
-                            <a href="/views/privadas/Admin/ElDeFiltros/Filtros.html" class="btn w-100 bordboton" style="color:
+                            <a href="/BicRobmvc/views/privadas/Admin/ElDeFiltros/Filtros.html" class="btn w-100 bordboton" style="color:
                                 aliceblue;">
                                 <div class="container">
                                     <i class="fa-solid fa-table"  style="color:

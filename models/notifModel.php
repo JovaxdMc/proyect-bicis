@@ -35,10 +35,33 @@ class notifModel {
     }
 
     public function selectNotif($id_usrR){
-        $sql = "SELECT * FROM notificaciones where id_usr_notif = :idUsrR ";
+        $sql = "SELECT * FROM notificaciones 
+                INNER JOIN bicis 
+                ON notificaciones.id_bic = bicis.id_bic 
+                WHERE id_usr_notif =  :idUsrR ";
         error_log($sql);
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":idUsrR", $id_usrR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function selectNotif1($id_notif){
+        $sql = "SELECT * FROM notificaciones 
+        INNER JOIN bicis 
+        ON notificaciones.id_bic = bicis.id_bic 
+        WHERE id_notif = :id_notif ";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_notif", $id_notif);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function selectImgNotif($id_notif){
+        $sql = "SELECT * FROM imagenes_rep where id_notif = :id_notif ";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_notif", $id_notif);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

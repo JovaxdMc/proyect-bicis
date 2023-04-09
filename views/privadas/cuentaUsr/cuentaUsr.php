@@ -2,6 +2,8 @@
   session_start();
   if (empty($_SESSION["id"])) {
     header("location: /BicRobmvc/index.php");
+  }else{
+    
   }
 ?>
 <!DOCTYPE html>
@@ -17,6 +19,12 @@
         <script src="https://kit.fontawesome.com/fdcbc345f8.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="/BicRobmvc/views/src/css/estiloCuenta.css">
+        <style>
+        .img-modal {
+            max-width: 100%;
+            height: auto;
+        }
+        </style>
     </head>
 
     <body class="body"> <?php 
@@ -69,8 +77,7 @@ include_once ('../res/nav.php');
                                             <div class="row">
                                                 <div class="col">
                                                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                                        data-bs-target="#editarDatosU"> Editar Informacion
-                                                    </button>                                       
+                                                        data-bs-target="#editarDatosU"> Editar Informacion </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,21 +123,24 @@ include_once ('../res/nav.php');
                             <input type="hidden" name="id_u" id="id_u" value="<?php echo $_SESSION['id'] ?>">
                             <div class="mb-3">
                                 <label for="Estado" class="form-label">Estado:</label>
-                                <input type="text" name="Estado" id="Estado" class="form-control" required value="<?php echo $_SESSION['Estado'] ?>">
+                                <input type="text" name="Estado" id="Estado" class="form-control" required
+                                    value="<?php echo $_SESSION['Estado'] ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="Municipio" class="form-label">Municipio:</label>
-                                <input type="text" name="Municipio" id="Municipio" class="form-control" required value="<?php echo $_SESSION['Municipio']?>">
+                                <input type="text" name="Municipio" id="Municipio" class="form-control" required
+                                    value="<?php echo $_SESSION['Municipio']?>">
                             </div>
                             <div class="mb-3">
                                 <label for="Correo" class="form-label">Correo:</label>
-                                <input type="text" name="Correo" id="Correo" class="form-control" required value="<?php echo $_SESSION['correo']?>">
+                                <input type="text" name="Correo" id="Correo" class="form-control" required
+                                    value="<?php echo $_SESSION['correo']?>">
                             </div>
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Telefono de contacto:</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control" required value="<?php echo $_SESSION['telefono']?>">
+                                <input type="text" name="telefono" id="telefono" class="form-control" required
+                                    value="<?php echo $_SESSION['telefono']?>">
                             </div>
-
                             <button id="actdatos" class="btn btn-success">Actualizar datos</button>
                             <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                         </form>
