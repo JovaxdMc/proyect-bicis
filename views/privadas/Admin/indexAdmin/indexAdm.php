@@ -1,3 +1,12 @@
+
+<?php
+  session_start();
+  if (empty($_SESSION["id"] and $_SESSION["id"]!="admin")) {
+    header("location: /BicRobmvc/index.php");
+  }else{
+    
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,9 +31,10 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <title>Index Admins</title>
     </head>
+    <?php include_once ("../recursos/navAdm.php"); ?>
     <body class="bg-black">
 
-        <?php include_once ("../recursos/navAdm.php"); ?>
+       
 
 
         <div class="container">

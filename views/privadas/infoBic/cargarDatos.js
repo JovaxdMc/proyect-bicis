@@ -5,7 +5,7 @@ var RodadaP = document.getElementById("Rodada");
 var FechaRepP = document.getElementById("FechaRep");
 var FechaRobP = document.getElementById("FechaRobo");
 var tituloH1 = document.getElementById("titulo");
-var lugarP = document.getElementById("lugar");
+var lugarP = document.getElementById("lugarRobo");
 var horaP = document.getElementById("hora");
 var comentsP = document.getElementById("coments");
 
@@ -37,7 +37,7 @@ function datosBici(){
         return response.json(); // Parsear la respuesta como un objeto JSON
       })
       .then(data => {  
-        // Crear el HTML para mostrar los datos en el modal
+        
         //console.log(data);
         var json = JSON.parse(data);
         var id_bic = json[0].id_bic;
@@ -53,7 +53,7 @@ function datosBici(){
         var id_reporte = json[0].id_reporte;
         var fecha_reporte = json[0].fecha_reporte;
         var fecha_robo = json[0].fecha_robo;
-        var lugar = json[0].lugar;
+        var lugar = json[0].Estado +" "+ json[0].Municipio;
         var hora = json[0].hora;
         var comentarios = json[0].comentarios;
         var estado_rep = json[0].estado_rep;

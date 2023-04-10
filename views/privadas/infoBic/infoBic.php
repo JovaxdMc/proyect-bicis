@@ -19,7 +19,12 @@
     </head>
 
     <body> <?php 
-    include_once ('../res/nav.php');
+    if($_SESSION["tipo_u"]=="usuario"){
+        include_once ('../res/nav.php');
+    }else if($_SESSION["tipo_u"]=="admin"){
+        include_once ("../Admin/recursos/navAdm.php");
+    } 
+   
     $idB=$_GET["id_b"];
     ?> <input type="hidden" id="idB" value="<?php echo $idB ?>">
         <div class="container">
@@ -40,14 +45,14 @@
                                                 <p id="Rodada"><b>Rodada: </b> </p>
                                                 <p id="FechaRep"><b>Fecha del reporte: </b></p>
                                                 <p id="FechaRobo"><b>Fecha del robo: </b></p>
-                                                <p id="lugar"><b>Lugar del robo: </b></p>
+                                                <p id="lugarRobo"><b>Lugar del robo: </b></p>
                                                 <p id="hora"><b>Hora: </b></p>
                                                 <p id="coments"><b>Comentarios: </b></p>
                                             </div>
                                             <div class="container paneldeinfous">
                                                 <h3>Datos del propietario</h3>
                                                 <p id="propieP"><b>Propietario: </b></p>
-                                                <p id="estado"><b>Estado: </b></p>
+                                                
                                             </div>
                                             <div class="col-6">
                                                 <img id="img" class="recimg" src="">

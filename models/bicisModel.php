@@ -40,7 +40,7 @@ class bicisModel {
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //error_log("Resultado de la consulta: " . json_encode($resultados));
+        error_log("Resultado de la consulta: " . json_encode($resultados));
         return json_encode($resultados);
     }
 

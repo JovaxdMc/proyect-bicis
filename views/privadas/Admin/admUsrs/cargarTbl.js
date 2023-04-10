@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     cargarTabla();
     var modalH = new bootstrap.Modal(document.getElementById('editarModal'));
     // Asignar el evento submit al formulario
+
     
+
 });
 
 cancelBusq = document.getElementById("cancelBusq");
@@ -60,8 +62,63 @@ function Editar(id) {
     modalH.show();
     console.log("Editar: " + id);
     // Obtener la fila correspondiente al ID
-    var fila = document.querySelector('td[data-id="' + id + '"]').parentNode;
+    cargarModal(id);
 
+    // Obtener el formulario
+    var formEditarUsrs = document.getElementById('formEditarUsrs');
+
+
+    
+    formEditarUsrs.addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+        var contraseña = document.getElementById("contraseñam").value;
+        var confirmarContraseña = document.getElementById("confirmarContraseñam").value;
+        if (contraseña !== confirmarContraseña) {
+            Swal.fire({
+                title: '<h3 style="color:white;"> Las contraseñas no coinciden </h3>',
+                text: '',
+                icon: 'error',
+                background: '#000',
+                backdrop: true,
+                confirmButtonColor: '#068'
+
+            });
+            return;
+        }
+         // Obtener los datos del formulario y construir el objeto FormData
+         var formData = new FormData(formEditarUsrs);
+         // Realizar la petición fetch con los datos del formulario
+         fetch('/BicRobmvc/controllers/usrsController.php?accion=update', {
+             method: 'POST',
+             body: formData
+         })
+             .then(function (response) {
+                 return response.text();
+             })
+             .then(function (texto) {
+                 console.log(texto);
+                 Swal.fire({
+                    title: '<h3 style="color:white;">Usuario actualizado con exito</h3>',
+                    text: '',
+                    icon: 'success',
+                    background: '#000',
+                    backdrop: true,
+                    confirmButtonColor: '#068'
+                });
+                cargarTabla();
+                 modalH.hide();
+             })
+             .catch(function (error) {
+                 console.error(error);
+             });
+      
+      });
+}
+
+function cargarModal(id){
+    var fila = document.querySelector('td[data-id="' + id + '"]').parentNode;
+    console.log("cargando modal");
     // Obtener los valores de las columnas
     var nombre = fila.querySelector('td[data-nombre]').dataset.nombre;
     var apellidoPaterno = fila.querySelector('td[data-apellidoPaterno]').dataset.apellidopaterno;
@@ -73,6 +130,7 @@ function Editar(id) {
     var nombreUsuario = fila.querySelector('td[data-nombreusuario]').dataset.nombreusuario;
 
     // Llenar los campos del formulario en el modal
+    document.getElementById("idM").value = id;
     document.getElementById("nombrem").value = nombre;
     document.getElementById("apellidoPaternom").value = apellidoPaterno;
     document.getElementById("apellidoMaternom").value = apellidoMaterno;
@@ -81,40 +139,11 @@ function Editar(id) {
     document.getElementById("correoElectronicom").value = correoElectronico;
     document.getElementById("telefonom").value = telefono;
     document.getElementById("nombreUsuariom").value = nombreUsuario;
-
-    // Mostrar el modal
-
 }
 
-// Obtener el formulario
-var formEditarUsrs = document.getElementById('formEditarUsrs');
+ 
 
-// Función para enviar el formulario a través de una petición fetch
-function actualizarUsuario(event) {
-  event.preventDefault();
 
-  // Obtener los datos del formulario y construir el objeto FormData
-  var formData = new FormData(formEditarUsrs);
-
-  // Realizar la petición fetch con los datos del formulario
-  fetch('/actualizar_usuario.php', {
-    method: 'POST',
-    body: formData
-  })
-  .then(function(response) {
-    return response.text();
-  })
-  .then(function(texto) {
-    console.log(texto);
-    $('#modalEditar').modal('hide');
-  })
-  .catch(function(error) {
-    console.error(error);
-  });
-}
-
-// Asignar el evento submit al formulario
-formEditarUsrs.addEventListener('submit', actualizarUsuario);
 
 function Eliminar(id) {
     console.log("Eliminar: " + id);
@@ -140,7 +169,15 @@ formRegUsrs.addEventListener("submit", (event) => {
 
     // Verificar que las contraseñas coincidan
     if (contraseña !== confirmarContraseña) {
-        alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+        Swal.fire({
+            title: '<h3 style="color:white;"> Las contraseñas no coinciden </h3>',
+            text: '',
+            icon: 'error',
+            background: '#000',
+            backdrop: true,
+            confirmButtonColor: '#068'
+
+        });
         return;
     }
 

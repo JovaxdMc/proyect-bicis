@@ -13,7 +13,7 @@ class usrsController {
                 $extra=$_POST["extra"];
                 $this->selectRep($id,$columna,$extra);
 
-            }else if($accion == 'insert'){
+            }else if($accion == ''){
                 $this->insertUsr();
 
             }else if($accion == 'registro'){
@@ -32,7 +32,7 @@ class usrsController {
                     $this->deleteRep($id,$param);
                 }
             }else if($accion == 'update'){
-                $this->updateRep();
+                $this->updateUsr();
             }else if($accion == 'updtImgPerf'){
                 $this->updtImgPerf();
             }else if($accion == 'updtDatosContacto'){
@@ -208,6 +208,25 @@ class usrsController {
         } else {
             echo "error";
             }
+        
+       
+    }    
+    
+    public function updateUsr(){
+        include_once(__DIR__ . '/../models/usrsModel.php');
+        $id_u = $_POST['idM'];
+        $nombre = $_POST['nombrem'];
+        $apellP = $_POST['apellidoPaternom'];
+        $apellM = $_POST['apellidoMaternom'];
+        $estado = $_POST['estadom'];
+        $municipio = $_POST['municipiom'];
+        $telefono = $_POST['telefonom'];
+        $correo = $_POST['correoElectronicom'];
+        $user = $_POST['nombreUsuariom'];
+        $pass = $_POST['contraseñam'];
+        $usrsModel = new usrsModel($this->conexion);
+        $resultado = $usrsModel->editarUsr($id_u,$nombre,$apellP,$apellM,$estado,$municipio,$correo,$telefono,$user,$pass);
+        
         }
        
     }      

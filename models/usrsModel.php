@@ -77,6 +77,23 @@ class usrsModel {
         $stmt->execute();
         return $stmt;
     }
+    
+    public function editarUsr($id_u,$nombre,$apellP,$apellM,$estado,$municipio,$correo,$telefono,$user,$pass) {
+        $sql = "UPDATE usuarios SET id=:id_u ,Nombre=:Nombre , Apellido_p=:Apellido_p , Estado=:Estado , Municipio=:Municipio , correo = :correo , telefono = :telefono, usuario=:usuario , pass= :pass WHERE id=:id_u";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_u", $id_u);
+        $stmt->bindParam(":Nombre", $nombre);
+        $stmt->bindParam(":Apellido_p", $apellP);
+        $stmt->bindParam(":Apellido:m", $apellM);
+        $stmt->bindParam(":Estado", $estado);
+        $stmt->bindParam(":Municipio", $municipio);
+        $stmt->bindParam(":correo", $correo);
+        $stmt->bindParam(":telefono", $telefono);
+        $stmt->bindParam(":usuario", $user);
+        $stmt->bindParam(":pass", $pass);
+        $stmt->execute();
+        return $stmt;
+    }
 
     public function obtener_nombre_archivo($id_usr) {
         $sql = "SELECT imgPerfil FROM usuarios WHERE id = :id_u";

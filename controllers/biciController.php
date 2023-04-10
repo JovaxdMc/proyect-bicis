@@ -40,7 +40,7 @@ class biciController {
         if (!empty($id)) {
             $bicisModel = new bicisModel($this->conexion);
             $resultado = $bicisModel->obtenerBiciReporteJson($id,$param);               
-            // Decodificar la cadena JSON en una matriz PHP
+            echo json_encode($resultado);
             }else {
             $error = $bicisModel->conexion->errorInfo();
             throw new Exception('Error de conexión');
@@ -148,7 +148,14 @@ class biciController {
                 echo'<p class="">Fecha del robo: '.$fecha_robo.'</p>';
                 echo'<p class="">Lugar donde se robo:</p>';
                 echo'<p class="">'.$Municipio.' '.$Estado.'</p>';
-                echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
+                
+                if($_SESSION["tipo_u"]=="usuario"){
+                    echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
+                }else if($_SESSION["tipo_u"]=="admin"){
+                    echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
+                    //header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
+                } 
+                
                 echo'</div>';
                 echo'</div>';
                 

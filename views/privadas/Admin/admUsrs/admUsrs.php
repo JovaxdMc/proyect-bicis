@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if (empty($_SESSION["id"] and $_SESSION["id"]!="admin")) {
+    header("location: /BicRobmvc/index.php");
+  }else{
+    
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,17 +95,8 @@
                         <button class="btn btn-success" onclick="cargarTabla();">Buscar</button>
                         <button class="btn btn-danger" id="cancelBusq">Cancelar</button>
                     </div>
-                    <table id="tablaUsrs">
-                        <thead>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div class="contenedor-tabla"></div>
-                </div>
-                <!-- Modal -->
-                <!-- Modal -->
-                <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel"
+
+                    <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -108,8 +107,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="p-3 border rounded" id="formEditarUsrs" method="POST">
-                                    <input type="hidden" name="id" id="id">
+                                <form action="/BicRobmvc/controllers/usrsController.php?accion=update" class="p-3 border rounded" id="formEditarUsrs" method="POST">
+                                    <input type="hidden" name="idM" id="idM">
                                     <div class="form-group">
                                         <label for="nombrem">Nombre:</label>
                                         <input type="text" class="form-control" name="nombrem" id="nombrem">
@@ -152,17 +151,30 @@
                                     <div class="form-group">
                                         <label for="confirmarContraseñam">Confirmar Contraseña:</label>
                                         <input type="password" class="form-control" name="confirmarContraseñam"
-                                            id="confirmarContraseñamm">
+                                            id="confirmarContraseñam">
                                     </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <input type="submit" class="btn btn-primary">Guardar cambios</input>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+
+                    <table id="tablaUsrs">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="contenedor-tabla"></div>
+                </div>
+                <!-- Modal -->
+                <!-- Modal -->
+               
     </body>
     <script src="./cargarTbl.js"></script>
 
