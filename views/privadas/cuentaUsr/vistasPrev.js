@@ -77,6 +77,16 @@ document.getElementById('nuevBic').addEventListener('submit',function(e){
         //seccionActualizable.innerHTML = xhr.responseText;
         modal.hide();
         formNb.reset();
+
+        Swal.fire({
+          title:'<h3 style="color:white;">Bicicleta registrada correctamente</h3>',
+          text: '',
+          icon: 'success',
+          background:'#000',
+          backdrop:true,
+          confirmButtonColor:'#068'
+        });
+
         cargarImgs();
         
       }
