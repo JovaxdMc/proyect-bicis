@@ -12,7 +12,7 @@
 <body>
 <?php include_once ("../recursos/navAdm.php"); ?>
     <div class="container">
-        <button onClick="selectEnc('Estado','reportes')">Cargar</button>
+        <button onClick="selectEnc('Municipio','reportes')">Cargar</button>
         <h1 class="text-center">Estadisticas de robos de bicicletas</h1>
         <canvas id="grafico"></canvas>
     </div>
@@ -36,19 +36,19 @@ function selectEnc(columna, tabla) {
       return response.json();
     })
     .then(data => {
-      generarGrafico(data);
+      generarGrafico(data, columna);
     })
     .catch(error => {
       console.error(error);
     });
 }
 
-function generarGrafico(json) {
+function generarGrafico(json, columna) {
   const datos = JSON.parse(json);
 
   const estados = {};
   datos.forEach(dato => {
-    estados[dato.Estado] = dato.cantidad;
+    estados[dato[columna]] = dato.cantidad;
   });
 
   const labels = Object.keys(estados);
@@ -82,6 +82,7 @@ function generarGrafico(json) {
     options: opciones
   });
 }
+
 
 
 </script>
