@@ -40,18 +40,20 @@ class LoginController {
                 $_SESSION["usuario"]=$resultado["usuario"];
                 $_SESSION["tipo_u"]=$resultado["tipo_u"];
                 $_SESSION["imgPerfil"]=$resultado["imgPerfil"];
+    
                 if($_SESSION["tipo_u"]=="usuario"){
-                    header('location: ../views/privadas/index/indexL.php');
-                }else if($_SESSION["tipo_u"]=="admin"){
-                    header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
-                }   
+                    return "usuario";
+                } else if($_SESSION["tipo_u"]=="admin"){
+                    return "admin";
+                }
             } else {
-                echo "Usuario o contraseña incorrectos";
+                return "error";
             }
-        }else{
+        } else {
             throw new Exception('Error de conexión');
         }
     }
+    
     
     public function logout(){
         session_start();

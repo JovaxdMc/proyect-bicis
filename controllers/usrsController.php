@@ -26,10 +26,9 @@ class usrsController {
                 $this->selectA($extra);
 
             }else if($accion == 'delete'){
-                if(isset($_GET["id"]) and isset($_GET["param"])){
+                if(isset($_GET["id"])){
                     $id=$_GET["id"];
-                    $param=$_GET["param"];
-                    $this->deleteRep($id,$param);
+                    $this->deleteUsr($id);
                 }
             }else if($accion == 'update'){
                 $this->updateUsr();
@@ -153,6 +152,14 @@ class usrsController {
             error_log("Ruta= $ruta_imagen");
 
         }
+    }
+
+    public function deleteUsr($id){
+        include_once(__DIR__ . '/../models/usrsModel.php');
+        $usrsModel = new usrsModel($this->conexion);
+        $resultado= $usrsModel->eliminarUsr($id);
+        error_log("Resultado de eliminar".$resultado);
+        
     }
 
     public function updtImgPerf(){

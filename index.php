@@ -12,10 +12,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="loginForm" action="./controllers/LoginControler.php?m=i" method="post" class="m-2 p-2">
+                    <div class="alert alert-warning" id="alertError" role="alert" style="display:none;">
+                        El usuario o contraseña no pueden estar vacios
+                    </div>
+                    <form id="loginForm" action="" method="post" class="m-2 p-2">
                         <img id="logo" src="./views/src/imgSis/log.png" style="width: 100px;" alt="Logo">
-                        <input type="text" name="user" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Usuario">
-                        <input type="password" name="passw" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Contraseña">
+                        <input type="text" id="user" name="user" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Usuario">
+                        <input type="password" id="passw" name="passw" pattern="[A-Za-z0-9_-]{1,15}"
+                            placeholder="Contraseña">
                         <input type="submit" name="btnLog" value="Iniciar Sesión"><br>
                         <a href="/BicRobmvc/views/publicas/registroUsr/regUsr.php"
                             class="btn btn-success">Registrarse</a>
@@ -82,3 +86,68 @@
 <?php 
 include_once './views/publicas/index/footer.php';
 ?>
+<script>
+formLogin = document.getElementById("loginForm");
+alertError = document.getElementById("alertError");
+
+formLogin.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("passw").value;
+
+
+    // Verificar que las contraseñas coincidan
+    if (user === "" || pass === "") {
+        alertError.style.display = "block";
+        return;
+    }
+
+
+    var datos = new FormData();
+    datos.append("user", user);
+    datos.append("passw", pass);
+
+
+    fetch('/BicRobmvc/controllers/LoginControler.php?m=i', {
+            method: 'POST',
+            body: datos
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al enviar el formulario");
+            }
+            return response.text();
+        })
+        .then(data => {
+            if (data.error) {
+                Swal.fire({
+                    title: '<h3 style="color:white;">Error al registrar al usuario</h3>',
+                    text: '',
+                    icon: 'error',
+                    background: '#000',
+                    backdrop: true,
+                    confirmButtonColor: '#068'
+                });
+            } else if (data === "usuario") {
+                window.location.href = "../views/privadas/index/indexL.php";
+            } else if (data === "admin") {
+                // Redirigir al usuario a la página correspondiente de administrador
+                window.location.href = "../views/privadas/Admin/indexAdmin/indexAdm.php";
+            } else {
+                Swal.fire({
+                    title: '<h3 style="color:white;">Usuario o contraseña erroneos</h3>',
+                    text: '',
+                    icon: 'success',
+                    background: '#000',
+                    backdrop: true,
+                    confirmButtonColor: '#068'
+                });
+            }
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
+</script>

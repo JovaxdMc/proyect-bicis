@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if (empty($_SESSION["id"] and $_SESSION["id"]!="admin")) {
+  if (empty($_SESSION["id"] and $_SESSION["tipo_u"]=="admin")) {
     header("location: /BicRobmvc/index.php");
   }else{
     
@@ -93,7 +93,7 @@
                     <div>
                         <input type="text" id="busq-usr">
                         <button class="btn btn-success" onclick="cargarTabla();">Buscar</button>
-                        <button class="btn btn-danger" id="cancelBusq">Cancelar</button>
+                        <button class="btn btn-danger" onclick="cancelar();">Cancelar</button>
                     </div>
 
                     <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel"

@@ -11,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 cancelBusq = document.getElementById("cancelBusq");
 cancelBusq = document.getElementById("cancelBusq");
 
-cancelBusq.addEventListener("click", () => {
+function cancelar(){
     busq.value = "";
     cargarTabla();
-});
+}
+    
+
 
 
 
@@ -116,6 +118,46 @@ function Editar(id) {
       });
 }
 
+function Eliminar(id) {
+
+    console.log("eliminar: " + id);
+
+    Swal.fire({
+        title: 'Importante',
+        text: "Estas seguro de borrar el usuaio",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        background:'#000',
+        confirmButtonText: 'Si, borrar',
+        cancelButtonText:'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch('/BicRobmvc/controllers/usrsController.php?accion=delete&id=' + id )
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Error al eliminar la imagen');
+            }
+            //button.parentNode.remove();
+            Swal.fire({
+              title:'<h3 style="color:white;">Usuario eliminado correctamente</h3>',
+              text: '',
+              icon: 'success',
+              background:'#000',
+              backdrop:true,
+              confirmButtonColor:'#068'
+              
+            });
+            cargarTabla();
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        }
+      })
+}
+
 function cargarModal(id){
     var fila = document.querySelector('td[data-id="' + id + '"]').parentNode;
     console.log("cargando modal");
@@ -143,11 +185,6 @@ function cargarModal(id){
 
  
 
-
-
-function Eliminar(id) {
-    console.log("Eliminar: " + id);
-}
 
 var formulario = document.getElementById("formRegUsrs");
 var botonEnviar = document.getElementById("registrar");

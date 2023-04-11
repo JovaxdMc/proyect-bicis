@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/BicRobmvc/views/src/css/estiloIndex.css">
   <link rel="stylesheet" href="/BicRobmvc/views/src/css/estiloCards.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://kit.fontawesome.com/fdcbc345f8.js" crossorigin="anonymous"></script>
 </head>
 <body>

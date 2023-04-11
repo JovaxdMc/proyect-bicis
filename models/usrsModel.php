@@ -18,6 +18,16 @@ class usrsModel {
         
     }
 
+    public function eliminarUsr($id) {
+        $sql = "DELETE FROM usuarios WHERE id= :id";
+        error_log($sql);
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
+
     public function selectA($extra){
         $sql = "SELECT * FROM usuarios WHERE tipo_u='usuario' $extra"  ;
         error_log($sql);
