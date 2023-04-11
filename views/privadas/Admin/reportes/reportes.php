@@ -12,7 +12,7 @@
 <body>
 <?php include_once ("../recursos/navAdm.php"); ?>
     <div class="container">
-        <button onClick="selectEnc('Municipio','reportes')">Cargar</button>
+        <button onClick="selectEnc('Estado','reportes')">Cargar</button>
         <h1 class="text-center">Estadisticas de robos de bicicletas</h1>
         <canvas id="grafico"></canvas>
     </div>
