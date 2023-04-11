@@ -6,10 +6,18 @@
 -->
 <html>
 	<head>
-		<title>Landed by HTML5 UP</title>
+		<title>BicRob</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/views/src/css/estiloIndex2.css">
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
+
+
+
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload landing">
@@ -17,40 +25,43 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
+					<h1 id="logo"><a href="index.html">Inicio</a></h1>
 					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#">Layouts</a>
-								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="elements.html">Elements</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
-						</ul>
+							<a href="#" class="button primary" data-bs-toggle="modal" data-bs-target="#modalLog" >Ingresar</a>
 					</nav>
 				</header>
+				<div class="container">
+					<div class="col" id="resultado-busqueda"></div>
+					<div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header pnencab">
+									<h3>Iniciar Sesión</h3>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form id="loginForm" action="./controllers/LoginControler.php?m=i" method="post" class="m-2 p-2">
+									  <img id="logo" src="/views/src/imgSis/log.png" style="width: 100px;" alt="Logo">
+									  <label for="user" style="color: black;">Usuario</label>
+									  <input type="text" name="user" id="user" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Usuario" style="color: black;">
+									  <label for="passw" style="color: black;">Contraseña</label>
+									  <input type="password" name="passw" id="passw" pattern="[A-Za-z0-9_-]{1,15}" placeholder="Contraseña" style="color: black;">
+									  <input type="submit" name="btnLog" value="Iniciar Sesión"><br>
+									  <a href="/BicRobmvc/views/publicas/registroUsr/regUsr.php" class="btn btn-success">Registrarse</a><br>
+									  <a href="#">¿Olvidó su contraseña? Recuperar</a>
+									</form>
+								  </div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 			<!-- Banner -->
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h2>The future has landed</h2>
-							<p>And there are no hoverboards or flying cars.<br />
-							Just apps. Lots of mother flipping apps.</p>
+							<h2>Reporta y visualiza</h2>
+							<p>Juntos contra el robo de bicicletas mantengamos nuetras comunidad informada</p>
 						</header>
 						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
 					</div>
