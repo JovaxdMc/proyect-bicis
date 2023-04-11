@@ -149,12 +149,9 @@ class biciController {
                 echo'<p class="">Lugar donde se robo:</p>';
                 echo'<p class="">'.$Municipio.' '.$Estado.'</p>';
                 
-                if($_SESSION["tipo_u"]=="usuario"){
-                    echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
-                }else if($_SESSION["tipo_u"]=="admin"){
                     echo'<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b='.$id_bic.'\'">Mas informacion</button>';
                     //header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
-                } 
+
                 
                 echo'</div>';
                 echo'</div>';

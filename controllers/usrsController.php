@@ -13,7 +13,7 @@ class usrsController {
                 $extra=$_POST["extra"];
                 $this->selectRep($id,$columna,$extra);
 
-            }else if($accion == ''){
+            }else if($accion == 'insert'){
                 $this->insertUsr();
 
             }else if($accion == 'registro'){
@@ -108,7 +108,7 @@ class usrsController {
         if ($resultado) {
             move_uploaded_file($temp_file, $ruta.'/'.$nomf); 
             //echo "<script>alert('El usuario se registro correctamente.');</script>";
-                error_log("El usuario se registro correctamente");
+                //error_log("El usuario se registro correctamente");
                 header("Location: /BicRobmvc/index.php");
             } else {
                 error_log("Error al registrar el usuario");
