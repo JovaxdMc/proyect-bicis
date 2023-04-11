@@ -42,9 +42,9 @@ class LoginController {
                 $_SESSION["imgPerfil"]=$resultado["imgPerfil"];
     
                 if($_SESSION["tipo_u"]=="usuario"){
-                    return "usuario";
+                    echo "usuario";
                 } else if($_SESSION["tipo_u"]=="admin"){
-                    return "admin";
+                    echo "admin";
                 }
             } else {
                 return "error";

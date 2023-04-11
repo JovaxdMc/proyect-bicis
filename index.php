@@ -120,6 +120,7 @@ formLogin.addEventListener("submit", (event) => {
             return response.text();
         })
         .then(data => {
+            console.log(data);
             if (data.error) {
                 Swal.fire({
                     title: '<h3 style="color:white;">Error al registrar al usuario</h3>',
@@ -130,10 +131,10 @@ formLogin.addEventListener("submit", (event) => {
                     confirmButtonColor: '#068'
                 });
             } else if (data === "usuario") {
-                window.location.href = "../views/privadas/index/indexL.php";
+                window.location.href = "/BicRobmvc/views/privadas/index/indexL.php";
             } else if (data === "admin") {
                 // Redirigir al usuario a la página correspondiente de administrador
-                window.location.href = "../views/privadas/Admin/indexAdmin/indexAdm.php";
+                window.location.href = "/BicRobmvc/views/privadas/Admin/indexAdmin/indexAdm.php";
             } else {
                 Swal.fire({
                     title: '<h3 style="color:white;">Usuario o contraseña erroneos</h3>',
