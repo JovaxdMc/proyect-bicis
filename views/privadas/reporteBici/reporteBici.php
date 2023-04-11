@@ -15,10 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/fdcbc345f8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/BicRobmvc/views/src/css/estiloReporte.css">
-
-
-
-
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -27,13 +23,6 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js">
     </script>
-
-
-
-
-
-
-
 </head>
 
 <body> <?php 
@@ -81,12 +70,10 @@
                         <h2>Datos del Robo</h2>
                         <form action="/BicRobmvc/controllers/reporteController.php?accion=insert" method="POST"
                             class="formReporte">
-
-
                             <div class="mb-3">
                                 <label for="lugar" class="form-label w-100">Estado</label>
                                 <div class="input-group">
-                                    <select name="estado" id="estado" required onchange="cargarCiudades()"
+                                    <select name="Estado" id="Estado" required onchange="cargarCiudades()"
                                         class="form-control">
                                         <option value="">Seleccione un Estado</option>
                                         <option value="Aguascalientes">Aguascalientes</option>
@@ -125,16 +112,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="lugar" class="form-label w-100">Municipio</label>
-                                <select name="ciudad" id="ciudad" required class="form-control w-100">
+                                <select name="Municipio" id="Municipio" required class="form-control w-100">
                                     <option value="">Seleccione una ciudad</option>
                                 </select>
-
-
-
                                 <script>
                                 // Obtener los elementos select del estado y de la ciudad
-                                const estadoSelect = document.getElementById("estado");
-                                const ciudadSelect = document.getElementById("ciudad");
+                                const estadoSelect = document.getElementById("Estado");
+                                const ciudadSelect = document.getElementById("Municipio");
 
                                 // Definir un objeto con las ciudades disponibles para cada estado
                                 const ciudadesPorEstado = {
