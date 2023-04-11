@@ -16,7 +16,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
                                 href="\BicRobmvc\views\privadas\Admin\admUsrs\admUsrs.php">Administracion de
-                                usuarios</a></li>             
+                                usuarios</a></li>          
+                         <li><a class="dropdown-item"
+                                href="\BicRobmvc\views\privadas\Admin\reportes\reportes.php">Estadisticas</a></li>             
                     </ul>
                 </li>
                 <li class="nav-item">

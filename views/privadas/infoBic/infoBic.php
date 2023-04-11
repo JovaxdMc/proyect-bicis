@@ -82,7 +82,7 @@
 
                                                 <label for="contenido" class="form-label">Comentarios</label>
                                                 <textarea name="contenido" id="contenidoNotf" cols="30" rows="10"
-                                                    class="form-control"></textarea>
+                                                    class="form-control" required></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="fotos" class="form-label">Comentarios</label>
