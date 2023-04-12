@@ -12,6 +12,12 @@ class biciController {
                 $columna=$_POST["columna"];
                 $tabla=$_POST["tabla"];
                 $this->selectEnc($columna,$tabla);
+            }else if($accion == 'selectMunic'){
+                $columnaEstado=$_POST["columnaEstado"];
+                $columnaMunicipio=$_POST["columnaMunicipio"];
+                $estado=$_POST["estado"];
+                $tabla=$_POST["tabla"];
+                $this->selectMunic($estado, $tabla, $columnaEstado, $columnaMunicipio);
             }else if($accion == 'selectIndex'){
                 $extra=$_POST["extra"];
                 $this->selectIndex($extra);
@@ -36,6 +42,13 @@ class biciController {
         include_once(__DIR__ . '/../models/statsModel.php');
         $statsModel = new statsModel($this->conexion);
         $resultado = $statsModel->selectEnc($columna,$tabla);               
+        // Decodificar la cadena JSON en una matriz PHP
+        echo json_encode($resultado);        
+    } 
+    public function selectMunic($estado, $tabla, $columnaEstado, $columnaMunicipio){
+        include_once(__DIR__ . '/../models/statsModel.php');
+        $statsModel = new statsModel($this->conexion);
+        $resultado = $statsModel->selectMunic($estado, $tabla, $columnaEstado, $columnaMunicipio);               
         // Decodificar la cadena JSON en una matriz PHP
         echo json_encode($resultado);        
     }

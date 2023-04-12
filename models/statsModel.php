@@ -20,6 +20,19 @@ class statsModel {
         return json_encode($resultados);
     }
 
+    public function selectMunic($estado, $tabla, $columnaEstado, $columnaMunicipio) {
+        $sql = "SELECT $columnaMunicipio, COUNT(*) as cantidad
+                FROM $tabla
+                WHERE $columnaEstado = ?
+                GROUP BY $columnaMunicipio;";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute([$estado]);
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //error_log("Resultado de la consulta: " . json_encode($resultados));
+        return json_encode($resultados);
+    }
+    
+
 
 }
 

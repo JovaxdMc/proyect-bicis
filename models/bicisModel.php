@@ -14,9 +14,9 @@ class bicisModel {
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":id_u", $id_usr);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);    
     }
+
     public function obtenerBicisReportadas($extra) {
         $sql = "SELECT bicis.id_bic, img_prin, marca, id_reporte, modelo,talla, year, rodada, estatus, fecha_reporte, fecha_robo, Estado, Municipio, estado_rep 
         FROM bicis  
@@ -78,6 +78,7 @@ class bicisModel {
         return $stmt;
     }
     
+
 
     public function insertarBici($img_prin,$num_s,$marca,$modelo,$talla,$year,$rodada,$comprobante,$fech_reg,$id_u) {
         $sql = "INSERT INTO bicis VALUES ('null',:img_prin,:num_s,:marca,:modelo,:talla,:anio,:rodada,'Registrada',:compro,:fech,:id_u)";
