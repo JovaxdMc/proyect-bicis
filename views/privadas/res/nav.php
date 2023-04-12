@@ -56,15 +56,6 @@
                     <!-- Agrega más elementos <li> con el contenido de cada notificación -->
                 </ul>
             </li>
-
-
-
-
-
-
-
-
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -79,9 +70,8 @@
     </div>
 </nav>
 
-
-
-<div class="modal fade" id="modalInfoNotf" tabindex="-1" role="dialog" aria-labelledby="modalInfoNotfLabel" aria-hidden="true">
+<div class="modal fade" id="modalInfoNotf" tabindex="-1" role="dialog" aria-labelledby="modalInfoNotfLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #343434;">
             <div class="modal-header" style="background-color: #0a4757;">
