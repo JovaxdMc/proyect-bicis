@@ -105,7 +105,7 @@ class biciController {
                 echo'<p class="fecha">'.$fecha_reg.'</p>';
                 echo'<div class="btn-group">'; 
                 if($estatus=="Reportado"){
-                    echo '<button class="btn btn-danger" onclick="window.location.href=\'../marcarRecuperada/Bicrecuperada.php?id_b='.$id_bic.'\'">Marcar como recuperada</button>';
+                    echo '<button class="btn btn-danger" onclick="marcarRecuperada(\''.$id_bic.'\');">Marcar como recuperada</button>';
                 }else if($estatus=="Registrada"){
                     echo'<button class="btn btn-danger" onclick="window.location.href=\'/BicRobmvc/views/privadas/reporteBici/reporteBici.php?id_b='.$id_bic.'\'">Reportar Robada</button>';
                 }
@@ -197,7 +197,7 @@ class biciController {
                     echo '<h5 class="">Lugar donde se robó: ' . $Municipio . ' ' . $Estado . '</h5>';
                     echo '</div>';
                     echo '<div class="row m-2">';
-                    echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b' . $id_bic . '\'">Ver detalles</button>';
+                    echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=' . $id_bic . '\'">Ver detalles</button>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';

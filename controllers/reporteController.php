@@ -17,13 +17,12 @@ class reporteController {
             }else if($accion == 'insert'){
                 $this->insertRep();
 
-            }else if($accion == 'delete'){
-                if(isset($_GET["id"]) and isset($_GET["param"])){
-                    $id=$_GET["id"];
-                    $param=$_GET["param"];
-                    $this->deleteRep($id,$param);
+            }else if($accion == 'finalizar'){
+                $id_bic = $_POST['id'];
+                $this->FinalizarRep($id_bic);
 
-                }
+            }else if($accion == 'delete'){
+                
             }else if($accion == 'update'){
                 $this->updateRep();
             }
@@ -49,15 +48,18 @@ class reporteController {
        $resultado = $reporteModel->insertarReporte($id_bic,$fecha_rep,$fecha_rob,$Estado,$Municipio,$hora,$comentarios);
        if ($resultado) {
             error_log("El reporte se registro correctamente");
-            $reporteModel->actualizarEstadoBic($id_bic);
+            $reporteModel->actualizarEstadoBic($id_bic,"Reportado");
             header("Location: /BicRobmvc/views/privadas/cuentaUsr/cuentaUsr.php");
         } else {
             error_log("Error al registrar el reporte");
         }
     }
 
-    public function deleteRep(){
-       
+    public function FinalizarRep($id_bic){
+        include_once(__DIR__ . '/../models/reporteModel.php');
+        $reporteModel = new reporteModel($this->conexion);
+        $reporteModel->actualizarEstadoBic($id_bic,"Registrada");
+        $reporteModel->actualizarEstadoReporte($id_bic);
     }
 
     public function updateRep(){

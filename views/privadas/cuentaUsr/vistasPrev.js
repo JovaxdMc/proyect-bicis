@@ -141,3 +141,41 @@ function cargarImgs() {
 
   //console.log("Solicitud de carga de imágenes enviada.");
 }
+function marcarRecuperada(id){
+
+  // Crear un objeto FormData y agregar los datos del formulario
+  var formData = new FormData();
+  formData.append("id", id);
+  
+
+  // Enviar los datos del formulario al servidor con fetch
+  fetch("/BicRobmvc/controllers/reporteController.php?accion=finalizar", {
+    method: "POST",
+    body: formData
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+      return response.text();
+
+    })
+    .then(data => {
+      console.log("dat" + data);
+      //const imageContainer = document.getElementById("image-container");
+      //imageContainer.innerHTML = data;
+      //const editModal = new bootstrap.Modal(document.getElementById("editModal"));
+      Swal.fire({
+        title:'<h3 style="color:white;"> Reporte finalizado Correctamente</h3>',
+        text: '',
+        icon: 'success',
+        background:'#000',
+        backdrop:true,
+        confirmButtonColor:'#068'
+      });
+      cargarImgs();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }

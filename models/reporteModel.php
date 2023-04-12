@@ -51,8 +51,17 @@ class reporteModel {
         return $stmt;
     }
 
-    public function actualizarEstadoBic($id_bic){
-        $sql = "UPDATE bicis SET estatus='Reportado' WHERE id_bic=:id_bic"; 
+    public function actualizarEstadoBic($id_bic,$estatus){
+        $sql = "UPDATE bicis SET estatus= :estatus WHERE id_bic=:id_bic"; 
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(":id_bic", $id_bic);
+        $stmt->bindParam(":estatus", $estatus);
+        $stmt->execute();
+        //error_log($stmt);
+        return $stmt;
+    }
+    public function actualizarEstadoReporte($id_bic){
+        $sql = "UPDATE reportes SET estado_rep='finalizado' WHERE id_bic=:id_bic"; 
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":id_bic", $id_bic);
         $stmt->execute();

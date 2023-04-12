@@ -107,8 +107,19 @@ form.addEventListener("submit", function(event) {
         try {
           var json = JSON.parse(data);
           // Crear el HTML para mostrar los datos en el modal
-          //console.log(data);
-          var json = JSON.parse(data);
+          console.log(data);
+          estado=json[0].estado_rep;
+          console.log(estado);
+          if(estado==="finalizado" || json[0].estatus==="Registrada"){
+            Swal.fire({
+              title:'<h3 style="color:white;">Numero de serie registrado pero no esta reportado como robado</h3>',
+              text: '',
+              icon: 'success',
+              background:'#000',
+              backdrop:true,
+              confirmButtonColor:'#068'
+            });
+          }else{
           var html = `
             <h3>${json[0].marca}</h3>
             <img src="/BicRobmvc/views/src/imgBicis/${json[0].img_prin}" class="card-img-fixed-size" alt="${data[0].img_prin}">
@@ -128,6 +139,7 @@ form.addEventListener("submit", function(event) {
       
           // Mostrar el modal
           modal.show();  
+          }
         } catch (e) {
             Swal.fire({
               title:'<h3 style="color:white;">No se encontro el numero de serie</h3>',
