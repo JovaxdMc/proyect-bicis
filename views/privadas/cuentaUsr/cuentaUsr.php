@@ -28,6 +28,8 @@ if (empty($_SESSION["id"])) {
 
 <body class="body"> <?php
                     include_once('../res/nav.php');
+                    include_once('../../../config/enc.php');
+                    
                     ?>
     <div class="container panFondprim">
         <div class="row justify-content-between">
@@ -102,7 +104,7 @@ if (empty($_SESSION["id"])) {
                                                                             //echo "/BicRobmvc/controllers/biciController.php";
                                                                             include_once("../../../controllers/biciController.php");
                                                                             $biciController = new biciController($conexion);
-                                                                            $biciController->select($_SESSION["id"], "id_u", "ORDER BY id_bic ASC"); // llama al método select() del controlador
+                                                                            $biciController->select ($_SESSION["id"], "id_u", "ORDER BY id_bic ASC"); // llama al método select() del controlador
                                                                             ?> </div>
                         </div>
                     </div>
@@ -164,7 +166,7 @@ if (empty($_SESSION["id"])) {
                             <button type="button" onclick="cancelImage();"
                                 class="btn btn-danger btnCancelPrev">Cancelar</button><br>
                         </div>
-                        <input type="hidden" name="id_u" id="id_u" value="<?php echo $_SESSION['id'] ?>">
+                        <input type="hidden" name="id_u" id="id_u" value="<?php  echo $_SESSION['id'] ?>">
                         <div class="mb-3">
                             <label for="num_serie" class="form-label">Número de serie:</label>
                             <input type="text" name="num_serie" id="num_serie" class="form-control">

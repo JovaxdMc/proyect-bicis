@@ -21,8 +21,9 @@
 
     <body> <?php 
     include_once ('../res/nav.php');
+    include_once ('../../../config/enc.php');
     ?> <div class="container"> <?php
-        $idB=$_GET["id_b"];
+        $idB=openssl_decrypt($_GET["id_b"],AES,KEY) ;
 		include_once ("../../../controllers/biciController.php");
         $biciController = new biciController($conexion);
         $resultado_selectU=$biciController->selectU($idB,"id_bic",""); // llama al método select() del controlador

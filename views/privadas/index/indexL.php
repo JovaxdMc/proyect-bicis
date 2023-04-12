@@ -75,18 +75,22 @@
         </div>
         <div id="carouselExampleAutoplaying" class="carousel slide carru" data-bs-ride="carousel">
             <div class="carousel-inner">
+                
                 <div class="carousel-item active">
-                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel1.jpeg" class="d-block w-100">
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (7).jpeg" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel2.jpeg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel3.jpeg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel4.jpeg" class="d-block w-100">
-                </div>
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (2).jpeg" class="d-block w-100">
+                </div><div class="carousel-item">
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (3).jpeg" class="d-block w-100">
+                </div><div class="carousel-item">
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (4).jpeg" class="d-block w-100">
+                </div><div class="carousel-item">
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (5).jpeg" class="d-block w-100">
+                </div><div class="carousel-item">
+                    <img src="/BicRobmvc/views/src/imgCarrusel/carrusel (6).jpeg" class="d-block w-100">
+               
+                
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide="prev">

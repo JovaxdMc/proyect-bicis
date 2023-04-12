@@ -5,7 +5,7 @@ class Conexion extends PDO{
   private $usr;
   private $passw;
   private $puerto;
-
+ 
   public function __construct(){
       $config = parse_ini_file(__DIR__ . '/../config/config.ini');
       $this->host = $config['host'];

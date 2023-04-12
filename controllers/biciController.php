@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__ . '/../config/conexion.php');
+include_once(__DIR__ . '/../config/enc.php');
 
 class biciController {
     public function __construct($conexion) {
@@ -109,7 +110,7 @@ class biciController {
                 }else if($estatus=="Registrada"){
                     echo'<button class="btn btn-danger" onclick="window.location.href=\'/BicRobmvc/views/privadas/reporteBici/reporteBici.php?id_b='.$id_bic.'\'">Reportar Robada</button>';
                 }
-                echo'<button class="btn btn-success"  onclick="window.location.href=\'/BicRobmvc/views/privadas/editarBicicleta/editBici.php?id_b='.$id_bic.'\'">Editar Informacion</button>';
+                echo'<button class="btn btn-success"  onclick="window.location.href=\'/BicRobmvc/views/privadas/editarBicicleta/editBici.php?id_b='.openssl_encrypt($id_bic,AES,KEY) .'\'">Editar Informacion</button>';
                 echo'</div>';
                 echo'</div>';
                 echo'</div>';
@@ -254,7 +255,7 @@ class biciController {
     
     public function insert(){
         include_once(__DIR__ . '/../models/bicisModel.php');
-        $idu=$_POST["id_u"];
+        $idu= $_POST["id_u"] ;
         $num_serie=$_POST["num_serie"];
         $marca=$_POST["marca"];
         $modelo=$_POST["modelo"];
