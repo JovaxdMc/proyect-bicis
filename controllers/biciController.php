@@ -159,6 +159,46 @@ class biciController {
             }
         
     }
+    public function selectIndexList($extra){
+            include_once(__DIR__ . '/../models/bicisModel.php');
+                $bicisModel = new bicisModel($this->conexion);
+                $resultado = $bicisModel->obtenerBicisReportadas($extra);           
+                foreach ($resultado as $fila) {    
+                    $id_bic=$fila["id_bic"];
+                    $fotoPrinc=$fila["img_prin"];
+                    $marca=$fila["marca"];
+                    $modelo=$fila["modelo"];
+                    $talla=$fila["talla"];
+                    $year=$fila["year"];
+                    $rodada=$fila["rodada"];
+                    $fecha_rep=$fila["fecha_reporte"];
+                    $fecha_robo=$fila["fecha_robo"];
+                    $Estado=$fila["Estado"];
+                    $Municipio=$fila["Municipio"];
+
+                    
+
+                    echo '<li class="list-group-item">';
+                    echo '<div>';
+                    echo '<h3 class="nombreBic">' . $marca . " " . $modelo . " " . $year . '</h3>';
+                    echo '<p class="">Fecha de reporte: ' . $fecha_rep . '</p>';
+                    echo '<p class="">Fecha del robo: ' . $fecha_robo . '</p>';
+                    echo '<p class="">Lugar donde se robó:</p>';
+                    echo '<p class="">' . $Municipio . ' ' . $Estado . '</p>';
+                    echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=' . $id_bic . '\'">Más información</button>';
+                    echo '</div>';
+                    echo '<div class="imgContList">';
+                    echo '<img src="/BicRobmvc/views/src/imgBicis/' . $fotoPrinc . '" alt="Imagen de la bicicleta" class="card-img-top">';
+                    echo '</div>';
+                    echo '</li>';
+
+                    //header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
+
+        
+                    
+                }
+            
+        }
 
     public function selectU($id_u,$param,$orden){
         include_once(__DIR__ . '/../models/bicisModel.php');
