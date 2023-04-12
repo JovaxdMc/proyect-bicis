@@ -1,6 +1,9 @@
 .list-group-item {
-    width: 60%;
-    background-color: rgb(105, 105, 105) !important;
+    width: 100%;
+    background-color: #212529 !important;
+    border-radius: 10px;
+    border: 2px solid #000000!important;
+    color: white!important;
   }
   .col-lg-8 {
     text-align: left;
