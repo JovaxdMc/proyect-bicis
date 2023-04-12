@@ -1,4 +1,12 @@
 .list-group-item {
-    width: 80%;
-    background-color: slategray !important;
+    width: 60%;
+    background-color: rgb(105, 105, 105) !important;
+  }
+  .col-lg-8 {
+    text-align: left;
+  }
+  ul.list-group {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   }

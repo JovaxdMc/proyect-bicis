@@ -80,8 +80,8 @@
                                         <div class="col-lg-12">
                                             <h2 class="nombreBic">Giant Trance 2019</h2>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <h4 class="text-center"><b>Datos del reporte</b></h4>
+                                        <div class="col-lg-8 text-right">
+                                            <h4 class=""><b>Datos del reporte</b></h4>
                                             <p class="">Fecha de reporte: 2023-04-07</p>
                                             <p class="">Fecha del robo: 2023-07-06</p>
                                             <p class="">Lugar donde se robó:</p>
@@ -92,8 +92,7 @@
                                                 alt="Imagen de la bicicleta" class="card-img-top">
                                         </div>
                                         <div class="col-lg-12"><button type="button" class="btn btn-primary"
-                                                onclick="window.location.href='/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=35'">Más
-                                                información</button></div>
+                                                onclick="window.location.href='/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=35'">Ver detalles</button></div>
                                     </div>
                                 </li> <?php
 
