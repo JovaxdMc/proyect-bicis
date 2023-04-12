@@ -91,6 +91,7 @@
                         </form>
                     </div>
                     <div>
+                    <br>
                         <input type="text" id="busq-usr">
                         <button class="btn btn-success" onclick="cargarTabla();">Buscar</button>
                         <button class="btn btn-danger" onclick="cancelar();">Cancelar</button>
@@ -102,7 +103,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="editarModalLabel">Editar Usuario</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -153,7 +154,7 @@
                                         <input type="password" class="form-control" name="confirmarContraseñam"
                                             id="confirmarContraseñam">
                                     </div>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    
                                     <input type="submit" class="btn btn-primary">Guardar cambios</input>
                                 </form>
                             </div>
