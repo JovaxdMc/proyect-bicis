@@ -81,7 +81,7 @@ class bicisModel {
 
 
     public function insertarBici($img_prin,$num_s,$marca,$modelo,$talla,$year,$rodada,$comprobante,$fech_reg,$id_u) {
-        $sql = "INSERT INTO bicis VALUES ('null',:img_prin,:num_s,:marca,:modelo,:talla,:anio,:rodada,'Registrada',:compro,:fech,:id_u)";
+        $sql = "INSERT INTO bicis VALUES (null,:img_prin,:num_s,:marca,:modelo,:talla,:anio,:rodada,'Registrada',:compro,:fech,:id_u)";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":img_prin", $img_prin);
         $stmt->bindParam(":num_s", $num_s);

@@ -169,7 +169,7 @@ if (empty($_SESSION["id"])) {
                         <input type="hidden" name="id_u" id="id_u" value="<?php  echo $_SESSION['id'] ?>">
                         <div class="mb-3">
                             <label for="num_serie" class="form-label">Número de serie:</label>
-                            <input type="text" name="num_serie" id="num_serie" class="form-control">
+                            <input type="text" name="num_serie" id="num_serie" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="marca" class="form-label">Marca:</label>
