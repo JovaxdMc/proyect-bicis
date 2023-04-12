@@ -67,101 +67,25 @@
                         <option value=" ORDER BY id_reporte DESC">Mas recientes primero</option>
                         <option value=" ORDER BY id_reporte ASC">Mas antiguos primero</option>
                     </select>
-                    <button onclick="buscar()">Aplicar Filtro</button>
+                    <button onclick="buscar('List')">Aplicar Filtro</button>
                 </div>
             </div>
             <div class="row justify-content-center mt-4 panelcontenido">
                 <div class="col-12 justify-content-center text-lg-center p-2">
-                    <div class="panel" id="bicicletas">
-
-
-
-
-
+                    <div class="panel" >
 
                         <div class="container">
                             <div class="col m-2 p-2">
                                 <div class="row">
 
-
-                                    <ul class="list-group p-2">
-                                        <li class="list-group-item mt-4">
-                                            <div class="row align-items-center">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <div class="col" style="text-align: start;">
-                                                                    <div class="col">
-                                                                        <div class="row mt-2">
-                                                                            <h1 class="nombreBic">Giant Trance 2019</h1>
-                                                                        </div>
-                                                                        <div class="row m-2">
-                                                                            <h4 class=""><b>Datos del reporte</b></h4>
-                                                                            <h5 class="">Fecha de reporte: 2023-04-07
-                                                                            </h5>
-                                                                            <h5 class="">Fecha del robo: 2023-07-06</h5>
-                                                                            <h5 class="">Lugar donde se robó:</h5>
-                                                                            <h5 class="">Guadalajara Jalisco</h5>
-                                                                        </div>
-                                                                        <br>
-                                                                        <br>
-                                                                        <br>
-                                                                        
-                                                                        <div class="row m-2">
-                                                                            <!-- Utilizamos mt-auto para alinear al fondo de la columna -->
-                                                                            <button type="button"
-                                                                                class="btn btn-primary"
-                                                                                onclick="window.location.href='/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=35'">Ver
-                                                                                detalles</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <img src="/BicRobmvc/views/src/imgBicis/fotoPrin_8572c08698.png"
-                                                                    alt="Imagen de la bicicleta" class="card-img-top">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item mt-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-12">
-                                                    <h2 class="nombreBic">Giant Trance 2019</h2>
-                                                </div>
-                                                <div class="col-lg-8 text-right">
-                                                    <h4 class=""><b>Datos del reporte</b></h4>
-                                                    <p class="">Fecha de reporte: 2023-04-07</p>
-                                                    <p class="">Fecha del robo: 2023-07-06</p>
-                                                    <p class="">Lugar donde se robó:</p>
-                                                    <p class="">Guadalajara Jalisco</p>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <img src="/BicRobmvc/views/src/imgBicis/fotoPrin_8572c08698.png"
-                                                        alt="Imagen de la bicicleta" class="card-img-top">
-                                                </div>
-                                                <div class="col-lg-12"><button type="button" class="btn btn-primary"
-                                                        onclick="window.location.href='/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=35'">Ver
-                                                        detalles</button>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-
-
-
-
-                                    <?php
+                                    <ul class="list-group p-2" id="bicicletas">
+                                         <?php
                                             //echo "/BicRobmvc/controllers/biciController.php";
                                             include_once ("../../../../controllers/biciController.php");
                                             $biciController = new biciController($conexion);
                                             $biciController->selectIndexList("ORDER BY id_reporte DESC"); // llama al método select() del controlador 
                                         ?>
+                                        </ul>
                                 </div>
                             </div>
                         </div>

@@ -147,12 +147,12 @@ form.addEventListener("submit", function(event) {
     });    
 
 
-    function buscar() {
+    function buscar(forma) {
       var Estado = document.getElementById("Estado").value;
       var Marca = document.getElementById("Marca").value;
       var Municipio = document.getElementById("Municipio").value;
       var Orden = document.getElementById("Orden").value;
-
+      var url = "/BicRobmvc/controllers/biciController.php?accion=selectIndex"+forma;
       if(Estado=="def"){
         EstadoF=" ";
       }else{
@@ -178,7 +178,7 @@ form.addEventListener("submit", function(event) {
       
       // Crear una solicitud AJAX
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/BicRobmvc/controllers/biciController.php?accion=selectIndex", true);
+      xhr.open("POST", url, true);
     
       // Configurar los encabezados de la solicitud
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

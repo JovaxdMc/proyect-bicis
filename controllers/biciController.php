@@ -16,6 +16,9 @@ class biciController {
             }else if($accion == 'selectIndex'){
                 $extra=$_POST["extra"];
                 $this->selectIndex($extra);
+            }else if($accion == 'selectIndexList'){
+                $extra=$_POST["extra"];
+                $this->selectIndexList($extra);
             }else if($accion == 'SelectRepJson'){
                 $id = $_POST["id"];
                 $param = $_POST["param"];
@@ -176,21 +179,42 @@ class biciController {
                     $Estado=$fila["Estado"];
                     $Municipio=$fila["Municipio"];
 
-                    
-
-                    echo '<li class="list-group-item">';
-                    echo '<div>';
-                    echo '<h3 class="nombreBic">' . $marca . " " . $modelo . " " . $year . '</h3>';
-                    echo '<p class="">Fecha de reporte: ' . $fecha_rep . '</p>';
-                    echo '<p class="">Fecha del robo: ' . $fecha_robo . '</p>';
-                    echo '<p class="">Lugar donde se robó:</p>';
-                    echo '<p class="">' . $Municipio . ' ' . $Estado . '</p>';
-                    echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b=' . $id_bic . '\'">Más información</button>';
+                    echo '<li class="list-group-item mt-4">';
+                    echo '<div class="row align-items-center">';
+                    echo '<div class="row">';
+                    echo '<div class="col-12">';
+                    echo '<div class="row">';
+                    echo '<div class="col-6">';
+                    echo '<div class="col" style="text-align: start;">';
+                    echo '<div class="col">';
+                    echo '<div class="row mt-2">';
+                    echo '<h1 class="nombreBic">' . $marca . " " . $modelo . " " . $year . '</h1>';
                     echo '</div>';
-                    echo '<div class="imgContList">';
+                    echo '<div class="row m-2">';
+                    echo '<h4 class=""><b>Datos del reporte</b></h4>';
+                    echo '<h5 class="">Fecha de reporte: ' . $fecha_rep . '</h5>';
+                    echo '<h5 class="">Fecha del robo: ' . $fecha_robo . '</h5>';
+                    echo '<h5 class="">Lugar donde se robó: ' . $Municipio . ' ' . $Estado . '</h5>';
+                    echo '</div>';
+                    echo '<br>';
+                    echo '<br>';
+                    echo '<br>';
+                    echo '<div class="row m-2">';
+                    echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b' . $id_bic . '\'">Ver detalles</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="col-6">';
                     echo '<img src="/BicRobmvc/views/src/imgBicis/' . $fotoPrinc . '" alt="Imagen de la bicicleta" class="card-img-top">';
                     echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                     echo '</li>';
+
+                    
 
                     //header('location: \BicRobmvc\views\privadas\Admin\indexAdmin\indexAdm.php');
 

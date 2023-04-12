@@ -123,7 +123,7 @@
                             <option value=" ORDER BY id_reporte DESC">Mas antiguos primero</option>
                         </select>
 
-                        <button onclick="buscar()">Aplicar Filtro</button>
+                        <button onclick="buscar(' ')">Aplicar Filtro</button>
                     </div>
                 </div>
                 <div class="panel" id="bicicletas"> <?php

@@ -308,6 +308,26 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" aria-labelledby="modalAlertLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content  bg-dark text-light">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalAlertLabel">[ATENCIÓN]</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>La operación "MARCAR BICICLETA COMO ROBADA" no es un método formal de realizar una denuncia por robo de bicicleta. La función de esta opción es permitir que cualquier usuario pueda identificar su bicicleta en caso de que la misma sea encontrada o registrada como parte de alguna actividad ilícita.</p>
+        <p>Le recomendamos que, en caso de haber sido víctima de un robo, acuda a la oficina más cercana del Ministerio Público para realizar su denuncia formal. De esta manera, se iniciará una investigación que pueda dar lugar al esclarecimiento de los hechos y la recuperación de su bicicleta, así como la posible detención de los responsables del delito.</p>
+        <p>Asimismo, le sugerimos que proporcione toda la información disponible sobre su bicicleta, como marca, modelo y número de serie, para facilitar la búsqueda y recuperación en caso de que sea posible.</p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-success">ENTENDIDO</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 <script src="./reporte.js"></script>
 <script>
