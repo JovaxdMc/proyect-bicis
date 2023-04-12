@@ -196,9 +196,6 @@ class biciController {
                     echo '<h5 class="">Fecha del robo: ' . $fecha_robo . '</h5>';
                     echo '<h5 class="">Lugar donde se robó: ' . $Municipio . ' ' . $Estado . '</h5>';
                     echo '</div>';
-                    echo '<br>';
-                    echo '<br>';
-                    echo '<br>';
                     echo '<div class="row m-2">';
                     echo '<button type="button" class="btn btn-primary" onclick="window.location.href=\'/BicRobmvc/views/privadas/infoBic/infoBic.php?id_b' . $id_bic . '\'">Ver detalles</button>';
                     echo '</div>';

@@ -26,23 +26,11 @@
     <div class="paneluno m-4 p.2">
         <div class="row p-2">
             <div class="row justify-content-end paneltitulosymas">
-                <div class="col-7">
-                    <h3>Reportes de Bicicletas activas</h3>
-                </div>
-                <div class="col-3">
-                    <input type="text" class="form-control" id="num_serie" name="num_serie"
-                        placeholder="Ingrese el número de serie...">
-                </div>
-                <div class="col-2">
-                    <select class="form-select" name="filtro" id="filtro">
-                        <option value="">Seleccione una opción</option>
-                        <option value="ubicacion">Ubicación</option>
-                        <option value="num_serie">Número de serie</option>
-                        <option value="fecha">Fecha</option>
-                    </select>
+                <div class="col-12" style="text-align: center;">
+                    <h1 class="mt-4">Reportes De Robo Activos</h1>
                 </div>
             </div>
-            <form class="d-flex" role="search">
+            <form class="d-flex mt-4 p-2" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar por número de serie"
                     aria-label="Search" id="input-num-serie">
                 <button class="btn btn-outline-success" id="buscar" type="submit">Buscar</button>
