@@ -104,6 +104,10 @@
                                                                             <h5 class="">Lugar donde se robó:</h5>
                                                                             <h5 class="">Guadalajara Jalisco</h5>
                                                                         </div>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        
                                                                         <div class="row m-2">
                                                                             <!-- Utilizamos mt-auto para alinear al fondo de la columna -->
                                                                             <button type="button"
