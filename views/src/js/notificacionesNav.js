@@ -39,11 +39,13 @@ function updateNotifications() {
                      modelo = notification["modelo"];
                      anio = notification["year"];
 
-                     listItem.innerHTML = '<class="dropdown-item" onclick="cargarInfo(\''+id+'\')" style="">' 
-                                        + 'fecha: '+fecha +'     Hora: '+ hora  
-                                        +'<br> Nueva notificacion para la bicicleta:'
-                                        +'<br>'+ marca+' '+modelo+' '+anio+'</a>'
-                                        
+                     listItem.innerHTML = '<div class="panel" style="background-color: #424547; margin: 2px; border: 2px dashed #898f93; color: black;">'
+                        + '<div class="dropdown-item" onclick="cargarInfo(\''+id+'\')" style="background-color: #ffffff; opacity: 0.9; transition: opacity 0.3s;">'
+                        + 'Fecha: ' + fecha + ' Hora: ' + hora
+                        + '<br>Nueva notificación para la bicicleta:'
+                        + '<br>' + marca + ' ' + modelo + ' ' + anio
+                        + '</div></div>';
+
                      list.appendChild(listItem);
                      actualizarNum();
                  }

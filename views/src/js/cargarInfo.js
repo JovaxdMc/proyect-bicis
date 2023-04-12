@@ -25,8 +25,8 @@ function cargarInfo(id_notif) {
                 for (var i = 0; i < imgUrls.length; i++) {
                     var img = document.createElement('img');
                     img.src = "/BicRobmvc/views/src/imgNotif/" + imgUrls[i]["archivo"];
-                    img.style.maxWidth = "50%";
-                    img.style.border = "1px solid red";
+                    img.style.maxWidth = "40%";
+                    img.style.margin = "1%";
                     imgsDiv.appendChild(img);
                 }
             }

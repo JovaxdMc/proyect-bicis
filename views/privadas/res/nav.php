@@ -27,6 +27,10 @@
                     <input type="hidden" id="id_usr_nav" value="<?php echo $_SESSION["id"]?>">
                 </a>
             </li>
+
+
+
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -35,8 +39,32 @@
                 </a>
                 <ul id="notification-list" class="dropdown-menu dropdown-menu-end">
                     <!-- Las notificaciones se agregarán aquí dinámicamente -->
+                    <li class="dropdown-item">
+                        <div class="notification-container">
+                            <h5 class="notification-title">Título de la notificación 1</h5>
+                            <p class="notification-message">Mensaje de la notificación 1</p>
+                            <small class="notification-date">Fecha de la notificación 1</small>
+                        </div>
+                    </li>
+                    <li class="dropdown-item">
+                        <div class="notification-container">
+                            <h5 class="notification-title">Título de la notificación 2</h5>
+                            <p class="notification-message">Mensaje de la notificación 2</p>
+                            <small class="notification-date">Fecha de la notificación 2</small>
+                        </div>
+                    </li>
+                    <!-- Agrega más elementos <li> con el contenido de cada notificación -->
                 </ul>
             </li>
+
+
+
+
+
+
+
+
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -51,26 +79,45 @@
     </div>
 </nav>
 
-<div class="modal fade" id="modalInfoNotf" tabindex="-1" role="dialog" aria-labelledby="modalInfoNotfLabel"
-    aria-hidden="true">
+
+
+<div class="modal fade" id="modalInfoNotf" tabindex="-1" role="dialog" aria-labelledby="modalInfoNotfLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalInfoNotfLabel">Detalles de la notificación</h5>
+        <div class="modal-content" style="background-color: #343434;">
+            <div class="modal-header" style="background-color: #0a4757;">
+                <h5 class="modal-title" id="modalInfoNotfLabel" style="color: white;">Detalles de la notificación</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="color: #ffffff;">
                 <p>Fecha: <span id="fechaN"></span></p>
                 <p>Hora: <span id="horaN"></span></p>
                 <p>Contenido: <span id="contN"></span></p>
                 <p>Bicicleta: <span id="biciN"></span></p>
-                <div class="imgs"></div>
-
-                <button class="btn btn-success" data-bs-dismiss="modal">Marcar como leida</button>
+                <div class="imgs" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                    <img src="imagen1.jpg">
+                    <img src="imagen2.jpg">
+                    <img src="imagen3.jpg">
+                    <!-- Agrega aquí las imágenes adicionales con el mismo estilo de margen -->
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="/BicRobmvc/views/src/js/notificacionesNaV.js"></script>
 <script src="/BicRobmvc/views/src/js/cargarInfo.js"></script>
