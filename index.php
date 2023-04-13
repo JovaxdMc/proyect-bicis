@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1,
 			user-scalable=no" />
-		<link rel="stylesheet" href="/BicRobmvc/IndexPro/assets/css/images/main.css" />
+		<link rel="stylesheet" href="/BicRobmvc/IndexPro/assets/css/main.css" />
 		<link rel="stylesheet" href="/BicRobmvc/views/src/css/estiloIndex2.css">
 
 		<script
