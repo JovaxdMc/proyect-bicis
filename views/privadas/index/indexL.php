@@ -36,9 +36,7 @@
                                 <a class="nav-link active" aria-current="page" href="/BicRobmvc/views/privadas/index/indexL.php"
                                     style="color: white">Inicio</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../info/info.html" style="color: white">Información</a>
-                            </li>
+                           
                         </ul>
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Buscar por número de serie"

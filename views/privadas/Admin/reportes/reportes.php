@@ -8,6 +8,8 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/estiloReportesGraf.css">
         <title>Document</title>
     </head>
     <!DOCTYPE html>
@@ -17,25 +19,29 @@
             <!-- Tus etiquetas meta, enlaces a archivos CSS y scripts JS aquí -->
         </head>
 
-        <body style="background-color: black;"> <?php include_once ("../recursos/navAdm.php"); ?> <div
-                class="container">
-                <div class="col-12 m-4 mt-2">
-                    <div class="row panelcontodo">
+        <body style="background-color: black;"> <?php include_once ("../recursos/navAdm.php"); ?> <div class="row">
+                <div class="col-12 m-4 p-2 panelfondo">
+                    <div class="row">
+                        <div class="container" style="background-color: #212529;!important">
+                            <div class="col-12 m-4 ">
+                                <div class="row panelcontodo">
+                                    <h1 class="text-center">Robo de bicicletas por estados</h1>
+                                    <canvas id="grafico"></canvas>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h1 class="text-center">Robo de bicicletas por Municipio</h1>
+                                <label for="Estado">Estado: </label>
+                                <select id="Estado" name="Estado">
+                                    <option value=" ">---------</option>
+                                </select>
+                                <button class="btn btn-info" onclick="selectMunicipio()">Aplicar</button>
+                                <canvas id="graficoMun"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <h1 class="text-center">Robo de bicicletas por estados</h1>
-                    <canvas id="grafico"></canvas>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <h1 class="text-center">Robo de bicicletas por Municipio</h1>
-                    <label for="Estado">Estado: </label>
-                    <select id="Estado" name="Estado">
-                        <option value=" ">---------</option>
-                    </select>
-                    <button onclick="selectMunicipio()">Aplicar</button>
-                    <canvas id="graficoMun"></canvas>
                 </div>
+            </div>
         </body>
 
     </html>

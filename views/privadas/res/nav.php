@@ -13,10 +13,7 @@
                     <a class="nav-link active" aria-current="page" href="/BicRobmvc/views/privadas/index/indexL.php"
                         style="color: white">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/BicRobmvc/views/privadas/index/indexL.php"
-                        style="color: white">Información</a>
-                </li>
+                
             </ul>
         </div>
         <ul class="navbar-nav ms-auto">
