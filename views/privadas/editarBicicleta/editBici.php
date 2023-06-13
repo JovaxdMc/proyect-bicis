@@ -221,7 +221,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <embed src="/BicRobmvc/views/src/comprobantes/<?php echo $comprobante; ?>"
-                                        type="application/pdf"  />
+                                        type="application/pdf" style="width: 70%;" />
                                 </div>
                             </div>
                         </div>
