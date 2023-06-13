@@ -30,7 +30,7 @@ class imgBicModel {
     
 
     public function insertarImgBic($id_bic,$arch,$titl,$desc) {
-        $sql = "INSERT INTO imagenes_bicis VALUES ('null',:id_b,:arch,:titulo,:descr)";
+        $sql = "INSERT INTO imagenes_bicis VALUES (null,:id_b,:arch,:titulo,:descr)";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindParam(":id_b", $id_bic);
         $stmt->bindParam(":arch", $arch);
@@ -43,7 +43,7 @@ class imgBicModel {
             error_log("Imagen insertada correctamente");
         } else {
             $error = $stmt->errorInfo();
-    error_log("Error al ejecutar la consulta: " . $error[2]);
+            error_log("Error al ejecutar la consulta: " . $error[2]);
             // Ocurrió un error durante la ejecución de la consulta
             // Código de manejo de errores aquí
         }

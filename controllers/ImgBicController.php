@@ -132,6 +132,7 @@ class ImgbiciController {
         $resultado = $imgBicModel->insertarImgBic($id_bic,$nomfFoto,$titulo,$desc);
         if ($resultado) {
             move_uploaded_file($nomFotoPrin, $rutaFotos.'/'.$nomfFoto); //Movemos el archivo a la ruta
+            error_log( "imagen agregada correctamente: " . $errorInfo[2]);
             //echo "El registro ha sido insertado exitosamente.";
           } else {
             $errorInfo = $resultado->errorInfo();
