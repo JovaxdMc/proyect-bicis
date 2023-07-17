@@ -126,7 +126,7 @@ form.addEventListener("submit", function(event) {
             <p>Talla: ${json[0].talla}</p>
             <p>Rodada: ${json[0].rodada}</p>
             <p>Fecha del robo: ${json[0].fecha_robo}</p>
-            <p>Lugar del robo: ${json[0].lugar}</p>
+            <p>Lugar del robo: ${json[0].Municipio} ${json[0].Estado}</p>
             <p>Hora del robo: ${json[0].hora}</p>
             <p>Comentarios:</p>
             <p>${json[0].comentarios}</p>

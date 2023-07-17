@@ -1,3 +1,7 @@
+// Incluir el archivo zoomImg.js
+var script = document.createElement('script');
+script.src = "/BicRobmvc/views/src/zoomImg.js";
+document.head.appendChild(script);
 window.addEventListener('load', function() {
     
   });
@@ -28,7 +32,8 @@ function cargarInfo(id_notif) {
                     img.style.maxWidth = "40%";
                     img.style.margin = "1%";
                     imgsDiv.appendChild(img);
-                }
+                  }
+                  
             }
         }
     };

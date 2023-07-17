@@ -68,6 +68,7 @@
             </div>
         </div>
     </body>
+    <script src="/BicRobmvc/views/src/zoomImg.js"></script>
     <script src="./carcarInfo.js"></script>
-
+    
 </html>
